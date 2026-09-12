@@ -5,6 +5,7 @@ on:
   push:
     paths:
       - '.github/workflows/layout-preview.yaml'
+      - 'scripts/prepare-preview-action.py'
 
 permissions:
   contents: read
@@ -25,8 +26,16 @@ jobs:
           p.write_text(original.replace('tiles: "8x4"', 'tiles: "8x2"'))
           PY
           echo 'Preview only: same UART RTL and CMOS5L PDK, supported 8x2 floorplan. Competition 8x4 remains unvalidated.' >> "$GITHUB_STEP_SUMMARY"
+      - name: Checkout pinned upstream action for installer compatibility repair
+        uses: actions/checkout@v6
+        with:
+          repository: TinyTapeout/tt-gds-action
+          ref: 45187a61556e197732a236b3f56acd2c800b9e0e
+          path: .preview-action
+      - name: Repair duplicate process-directory checkout
+        run: python3 scripts/prepare-preview-action.py
       - name: Build real CMOS5L preview GDS
-        uses: TinyTapeout/tt-gds-action@45187a61556e197732a236b3f56acd2c800b9e0e
+        uses: ./.preview-action
         with:
           pdk: ihp-sg13cmos5l
           tools-ref: da63c9927411e3aca350977d653d24bbf5bca972
@@ -35,11 +44,28 @@ jobs:
     needs: gds
     runs-on: ubuntu-24.04
     steps:
-      - uses: TinyTapeout/tt-gds-action/precheck@45187a61556e197732a236b3f56acd2c800b9e0e
+      - uses: actions/checkout@v6
+      - name: Checkout pinned upstream action for installer compatibility repair
+        uses: actions/checkout@v6
+        with:
+          repository: TinyTapeout/tt-gds-action
+          ref: 45187a61556e197732a236b3f56acd2c800b9e0e
+          path: .preview-action
+      - name: Repair duplicate process-directory checkout
+        run: python3 scripts/prepare-preview-action.py
+      - uses: ./.preview-action/precheck
 
   gl_test:
     needs: gds
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v6
-      - uses: TinyTapeout/tt-gds-action/gl_test@45187a61556e197732a236b3f56acd2c800b9e0e
+      - name: Checkout pinned upstream action for installer compatibility repair
+        uses: actions/checkout@v6
+        with:
+          repository: TinyTapeout/tt-gds-action
+          ref: 45187a61556e197732a236b3f56acd2c800b9e0e
+          path: .preview-action
+      - name: Repair duplicate process-directory checkout
+        run: python3 scripts/prepare-preview-action.py
+      - uses: ./.preview-action/gl_test
