@@ -1,0 +1,45 @@
+name: CMOS5L layout preview (8x2 only)
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/layout-preview.yaml'
+
+permissions:
+  contents: read
+
+jobs:
+  gds:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+      - name: Select supported preview footprint in runner checkout only
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('info.yaml')
+          original = p.read_text()
+          assert original.count('tiles: "8x4"') == 1
+          p.write_text(original.replace('tiles: "8x4"', 'tiles: "8x2"'))
+          PY
+          echo 'Preview only: same UART RTL and CMOS5L PDK, supported 8x2 floorplan. Competition 8x4 remains unvalidated.' >> "$GITHUB_STEP_SUMMARY"
+      - name: Build real CMOS5L preview GDS
+        uses: TinyTapeout/tt-gds-action@45187a61556e197732a236b3f56acd2c800b9e0e
+        with:
+          pdk: ihp-sg13cmos5l
+          tools-ref: da63c9927411e3aca350977d653d24bbf5bca972
+
+  precheck:
+    needs: gds
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: TinyTapeout/tt-gds-action/precheck@45187a61556e197732a236b3f56acd2c800b9e0e
+
+  gl_test:
+    needs: gds
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+      - uses: TinyTapeout/tt-gds-action/gl_test@45187a61556e197732a236b3f56acd2c800b9e0e

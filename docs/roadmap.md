@@ -22,7 +22,7 @@ or fabricated device. Track that evidence separately from simulated success.
 
 ## M2 — First programmable waveform
 
-Define a minimal cycle-exact SET / WAIT / JMP instruction contract in ADR 0002.
+Define a minimal cycle-exact SET / WAIT / JMP instruction contract in a new ADR (0002 records the layout-preview decision).
 Build a small instruction engine and a matching Python reference model. Initially
 use a short boot program to reproduce UART 0x55 at exactly documented timing.
 Then provide a host-loadable instruction store before calling the engine programmable
@@ -56,3 +56,9 @@ Then inspect the UART waveform and specify exact SET/WAIT/JMP execution timing.
 Keep M1 as a regression baseline while developing the engine. Open decisions:
 host connection, clock source available on the test board, program memory size/type,
 unique submission name, FPGA availability. None blocks local simulation.
+
+## Layout visualization follow-up
+
+ADR 0002 adds a separate CMOS5L 8x2 preview workflow for a real UART layout
+image and early physical feedback. The competition baseline remains 8x4;
+preview results do not establish 8x4 physical acceptance. Build results pending.
