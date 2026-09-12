@@ -54,3 +54,13 @@ separate evidence gate, and none of the physical gates was reached here.
 The inherited `src/config.json` disables in-flow KLayout DRC and XOR checks.
 Any later successful run must be read alongside its actual reports and precheck;
 a green job alone should not be described as exhaustive signoff.
+
+## Author-fixed run
+
+Commit `25ae1e0` was pushed with the metadata repair and this build record.
+[RTL CI](https://github.com/plssubscribe/protocol-emulator/actions/runs/34686128649)
+passed again. [GDS](https://github.com/plssubscribe/protocol-emulator/actions/runs/34686128730)
+failed solely on the unsupported `8x4` value, confirming the author error is fixed.
+Physical implementation and downstream physical checks remain unrun.
+[Docs](https://github.com/plssubscribe/protocol-emulator/actions/runs/34686128710)
+passed after the author repair as well.
