@@ -1,20 +1,24 @@
-<!---
-
-This file is used to generate your project datasheet. Please fill in the information below and delete any unused
-sections.
-
-You can also include images in this folder and reference them in the markdown. Each image must be less than
-512 kb in size, and the combined size of all images must be less than 1 MB.
--->
-
 ## How it works
 
-Explain how your project works
+Milestone 1 of a programmable protocol emulator. After reset, output 0 repeatedly
+transmits ASCII U (0x55) in UART 8N1 format. At a 50 MHz input clock each bit is
+434 clock cycles (115207.37 baud). Data is least-significant bit first. The line
+idles high, with one extra clock of idle after each stop bit. Other outputs are zero;
+all bidirectional pins have their output enables disabled.
 
 ## How to test
 
-Explain how to use your project
+Run `make test` from the repository with Icarus Verilog and the Python environment
+active. Inspect `test/tb.fst` for start-low, eight alternating data bits and stop-high.
+
+For future board bring-up, select the design, supply a 50 MHz clock and hold rst_n
+low for at least three rising edges before releasing it. Connect output 0 to a
+logic analyzer or a voltage-compatible USB UART adapter's RX input, with common
+ground. Decode as 115200 baud, 8 data bits, no parity, one stop bit; expect repeated U.
+A bit should measure about 8.68 microseconds. No hardware capture has been performed.
 
 ## External hardware
 
-List external hardware used in your project (e.g. PMOD, LED display, etc), if any
+For physical testing: a compatible Tiny Tapeout dev board or FPGA mapping, and
+logic analyzer or UART adapter. Confirm the actual board's I/O voltage before
+connection; use logic-level UART, not an RS-232 voltage interface.

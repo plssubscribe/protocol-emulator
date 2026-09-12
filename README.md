@@ -1,42 +1,68 @@
-![](../../workflows/gds/badge.svg) ![](../../workflows/docs/badge.svg) ![](../../workflows/test/badge.svg) ![](../../workflows/fpga/badge.svg)
+# Protocol emulator ASIC
 
-# Tiny Tapeout Verilog Project Template
+A learn-by-building entry for Jane Street’s Protocol Emulator ASIC Competition.
+Current milestone: UART TX bring-up. The final design must execute programmable
+protocols; this fixed UART is the first verification and pin-interface baseline.
 
-- [Read the documentation for project](docs/info.md)
+## Run it
 
-## What is Tiny Tapeout?
+Tools: Git, Make, Icarus Verilog, Python 3.11 and cocotb 2.0.1.
+On macOS install Icarus with `brew install icarus-verilog`; on Ubuntu use
+`sudo apt-get install iverilog make`. From this repository:
 
-Tiny Tapeout is an educational project that aims to make it easier and cheaper than ever to get your digital and analog designs manufactured on a real chip.
+```sh
+uv venv --python 3.11 .venv
+uv pip install --python .venv/bin/python -r test/requirements.txt
+source .venv/bin/activate
+make test
+```
 
-To learn more and get started, visit https://tinytapeout.com.
+If uv is unavailable, use `python3.11 -m venv .venv` followed by
+`.venv/bin/pip install -r test/requirements.txt` instead.
+`make unit` runs exhaustive byte tests at four bit divisors. `make integration`
+runs the real top-level pins at the production divisor. Open `test/tb.fst`
+in GTKWave or Surfer to inspect the waveform.
 
-## Set up your Verilog project
+## What it does
 
-1. Add your Verilog files to the `src` folder.
-2. Edit the [info.yaml](info.yaml) and update information about your project, paying special attention to the `source_files` and `top_module` properties. If you are upgrading an existing Tiny Tapeout project, check out our [online info.yaml migration tool](https://tinytapeout.github.io/tt-yaml-upgrade-tool/).
-3. Edit [docs/info.md](docs/info.md) and add a description of your project.
-4. Adapt the testbench to your design. See [test/README.md](test/README.md) for more information.
+With a 50 MHz clock and reset released, `uo_out[0]` repeatedly sends `0x55`
+(the character U), using 115200 baud, 8 data bits, no parity, one stop bit (8N1).
+Hold active-low reset for at least three rising clock edges before starting.
+Every bit lasts 434 clocks; a frame has an additional idle clock after its stop bit.
+All other dedicated outputs are zero; bidirectional pins remain inputs.
+No external data inputs are used yet.
 
-The GitHub action will automatically build the ASIC files using [LibreLane](https://www.zerotoasiccourse.com/terminology/librelane/).
+## Repository map
 
-## Enable GitHub actions to build the results page
+- `src/`: synthesizable Verilog and inherited CMOS5L physical configuration.
+- `test/`: exhaustive transmitter unit test and black-box cocotb pin test.
+- `docs/decisions/`: architecture decision records (ADRs).
+- `docs/verification.md`: checks and acceptance criteria.
+- `docs/roadmap.md`: milestones and current state.
+- `docs/info.md`: Tiny Tapeout datasheet and hardware bring-up instructions.
+- `info.yaml`: top module, source list, pins, clock, and 8x4 allocation.
+- `.github/workflows/`: simulation, CMOS5L GDS, precheck, gate simulation, docs and optional FPGA.
+- `work/`: ignored local build products. `.venv/` is ignored too.
 
-- [Enabling GitHub Pages](https://tinytapeout.com/faq/#my-github-action-is-failing-on-the-pages-part)
+## Continuing the project
 
-## Resources
+Start with [the roadmap](docs/roadmap.md). Record each consequential architecture
+choice in `docs/decisions/`; preserve prior decisions and explicitly supersede them.
+Keep each milestone runnable. Explain new concepts at the change that needs them.
 
-- [FAQ](https://tinytapeout.com/faq/)
-- [Digital design lessons](https://tinytapeout.com/digital_design/)
-- [Learn how semiconductors work](https://tinytapeout.com/siliwiz/)
-- [Join the community](https://tinytapeout.com/discord)
-- [Build your design locally](https://www.tinytapeout.com/guides/local-hardening/)
+This is a local repository on `milestone/uart-tx`. The `template` remote records
+upstream; no personal remote or publication has been created. Before submission,
+fill in the author in `info.yaml`, choose a unique top-module name, publish to your
+own GitHub repository, and run the GDS workflow. Configure GitHub Pages as required
+by the template viewer. Passing simulation does not establish physical timing or
+manufacturability; those remain separate acceptance gates.
 
-## What next?
+## Provenance and constraints
 
-- [Submit your design to the next shuttle](https://app.tinytapeout.com/).
-- Edit [this README](README.md) and explain your design, how it works, and how to test it.
-- Share your project on your social network of choice:
-  - LinkedIn [#tinytapeout](https://www.linkedin.com/search/results/content/?keywords=%23tinytapeout) [@TinyTapeout](https://www.linkedin.com/company/100708654/)
-  - Mastodon [#tinytapeout](https://chaos.social/tags/tinytapeout) [@matthewvenn](https://chaos.social/@matthewvenn)
-  - X (formerly Twitter) [#tinytapeout](https://twitter.com/hashtag/tinytapeout) [@tinytapeout](https://twitter.com/tinytapeout)
-  - Bluesky [@tinytapeout.com](https://bsky.app/profile/tinytapeout.com)
+Official [CMOS5L template](https://github.com/TinyTapeout/ttihp-verilog-template/tree/cmos5l),
+commit `b86a2a781484bcab7ba522dc5de540086695a430`, retrieved 2026-09-12.
+The [competition announcement](https://blog.janestreet.com/protocol-emulator-asic-competition/)
+requires an open-source programmable protocol emulator, CMOS5L and 8x4 tiles;
+the announced deadline is January 18, 2027. Rules should be rechecked before submission.
+The inherited Apache-2.0 license is retained. Template action branch references
+remain upstream defaults; record resolved versions when producing a release build.
