@@ -10,7 +10,11 @@ Verification: local `make test` PASS on 2026-09-12 with Icarus 13.0 and cocotb
 2.0.1 in the Python 3.11 environment. All 256 bytes passed at divisors 1, 2, 3,
 and 434 (1,024 unit cases); the top-level pin regression passed over 869.34 us
 of simulated time. Waveform: `test/tb.fst`. M1 simulation acceptance is complete.
-GDS, gate simulation and physical pin capture have not been run. No FPGA or board availability assumed.
+GitHub RTL CI passed. GDS workflow was attempted but stopped before synthesis:
+the inherited CMOS5L support package rejects 8x4 and lacks its floorplan. Author
+metadata has been filled in. See [physical-build evidence](physical-build.md).
+Gate simulation, physical checks and physical pin capture have not run.
+No FPGA or board availability assumed.
 
 Done criteria: automated RTL checks pass and the expected waveform is available.
 Hardware follow-up: capture 115200 8N1 U characters at the output pin on an FPGA
@@ -46,7 +50,9 @@ Stretch protocols follow evidence of area and timing headroom.
 
 ## Next session
 
-Inspect the UART waveform, then specify exact SET/WAIT/JMP execution timing.
+Resolve the upstream CMOS5L 8x4 floorplan/tooling mismatch and rerun GDS;
+inspect timing, layout checks and gate simulation before claiming physical success.
+Then inspect the UART waveform and specify exact SET/WAIT/JMP execution timing.
 Keep M1 as a regression baseline while developing the engine. Open decisions:
 host connection, clock source available on the test board, program memory size/type,
 unique submission name, FPGA availability. None blocks local simulation.

@@ -1,7 +1,7 @@
 # Tiny Tapeout project information
 project:
   title:        "Programmable protocol emulator — UART bring-up"      # Project title
-  author:       ""      # Your name
+  author:       "Erik Newsham"      # Your name
   discord:      ""      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
   description:  "Milestone 1: UART TX bring-up for a programmable protocol engine"      # One line description of what your project does
   language:     "Verilog" # other examples include SystemVerilog, Amaranth, VHDL, etc

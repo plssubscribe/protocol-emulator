@@ -50,11 +50,13 @@ Start with [the roadmap](docs/roadmap.md). Record each consequential architectur
 choice in `docs/decisions/`; preserve prior decisions and explicitly supersede them.
 Keep each milestone runnable. Explain new concepts at the change that needs them.
 
-This is a local repository on `milestone/uart-tx`. The `template` remote records
-upstream; no personal remote or publication has been created. Before submission,
-fill in the author in `info.yaml`, choose a unique top-module name, publish to your
-own GitHub repository, and run the GDS workflow. Configure GitHub Pages as required
-by the template viewer. Passing simulation does not establish physical timing or
+The repository is published at https://github.com/plssubscribe/protocol-emulator
+on `milestone/uart-tx`; `template` records upstream. Author metadata is Erik Newsham.
+The first GDS attempts stop at metadata validation because the inherited CMOS5L
+support tools do not provide the required 8x4 floorplan. See
+[the physical-build record](docs/physical-build.md). Before submission, choose a
+unique top-module name and complete the physical checks. Configure GitHub Pages
+as required by the template viewer. Passing simulation does not establish physical timing or
 manufacturability; those remain separate acceptance gates.
 
 ## Provenance and constraints
