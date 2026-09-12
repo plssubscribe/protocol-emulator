@@ -13,7 +13,8 @@ of simulated time. Waveform: `test/tb.fst`. M1 simulation acceptance is complete
 GitHub RTL CI passed. GDS workflow was attempted but stopped before synthesis:
 the inherited CMOS5L support package rejects 8x4 and lacks its floorplan. Author
 metadata has been filled in. See [physical-build evidence](physical-build.md).
-Gate simulation, physical checks and physical pin capture have not run.
+The separate 8x2 preview now passes gate simulation and physical checks listed
+below; these have not passed for 8x4. Physical pin capture has not run.
 No FPGA or board availability assumed.
 
 Done criteria: automated RTL checks pass and the expected waveform is available.
@@ -61,4 +62,6 @@ unique submission name, FPGA availability. None blocks local simulation.
 
 ADR 0002 adds a separate CMOS5L 8x2 preview workflow for a real UART layout
 image and early physical feedback. The competition baseline remains 8x4;
-preview results do not establish 8x4 physical acceptance. Build results pending.
+preview results do not establish 8x4 physical acceptance. GDS, precheck and gate
+simulation passed in run 34686808569. The real [layout image](images/uart-cmos5l-8x2-preview.png)
+and timing/check details are recorded in [physical-build.md](physical-build.md).

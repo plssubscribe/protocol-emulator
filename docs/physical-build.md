@@ -64,3 +64,63 @@ failed solely on the unsupported `8x4` value, confirming the author error is fix
 Physical implementation and downstream physical checks remain unrun.
 [Docs](https://github.com/plssubscribe/protocol-emulator/actions/runs/34686128710)
 passed after the author repair as well.
+
+## Separate 8x2 visualization build
+
+ADR 0002 adds a preview on the supported CMOS5L 8x2 floorplan without changing
+committed 8x4 metadata. This preview cannot validate the competition footprint.
+The first preview run, 34686728104, passed metadata validation but failed in the
+upstream PDK installer: its parent repository now already contains the directory
+that the installer tries to clone. `scripts/prepare-preview-action.py` repairs
+only the ephemeral pinned action checkout, replacing that directory before the
+original standalone process clone and pinned checkout. Process revision remains
+`ae7613984daf3ac2b14897321399df497278068f`.
+
+The repaired preview run is
+https://github.com/plssubscribe/protocol-emulator/actions/runs/34686808569
+(source `ccc41360c41e19b219f33c65f56a3647f8a426c9`). All three jobs passed: GDS, gate-level simulation and Tiny Tapeout precheck.
+
+![CMOS5L UART layout preview](images/uart-cmos5l-8x2-preview.png)
+
+The PNG is the unmodified upstream GDS render (17242 × 3138 pixels).
+The small active logic patch is near the upper-left. This is an 8x2 physical
+preview, not the still-blocked 8x4 competition implementation.
+
+Final report evidence:
+
+| Check / metric | Preview result |
+| --- | --- |
+| Footprint | 1724.16 × 313.74 µm |
+| Functional/buffer cells | 192; 2895.78 µm² |
+| Filler/decoupling cells | 41,393 |
+| Worst setup slack | +13.475 ns |
+| Worst hold slack | +0.119 ns |
+| Setup/hold violations | 0 / 0 |
+| Routed DRC errors | 0 |
+| Magic DRC errors | 0 |
+| LVS errors | 0; circuits match uniquely |
+| Antenna net/pin violations | 0 / 0 |
+| Gate-level pin regression | PASS |
+| Tiny Tapeout precheck | All 9 listed checks PASS |
+
+Timing covered the nominal-RC fast, typical and slow library corners at 20 ns.
+These are results under the inherited generic SDC constraints, not proof of
+board-level timing or 8x4 timing closure. Full in-flow KLayout DRC/XOR were
+disabled by upstream configuration; the separate precheck's KLayout CMOS5L DRC,
+pin-label and zero-area checks did run and pass. Wire-length threshold checking
+was skipped because no threshold was configured. IR-drop analysis warned that
+voltage-source locations were unspecified. The linter reported 85 warnings;
+retain the logs for review rather than interpreting a green workflow as zero warnings.
+
+LibreLane version: 3.0.0rc1. Parent IHP-Open-PDK revision:
+`2bbec755dc67ca3db0261c3d6163e15735d66710`. Standalone CMOS5L revision remains
+`ae7613984daf3ac2b14897321399df497278068f`.
+Downloaded artifacts and logs are under ignored `work/physical/preview-artifacts/`.
+The committed image and this evidence record remain available after Actions
+artifacts expire.
+
+A [close view of the UART region](images/uart-cmos5l-8x2-detail.png) was rendered
+directly from the final GDS with KLayout 0.29.12 and the pinned process's
+`libs.tech/klayout/tech/sg13cmos5l.lyp` layer colors. The reproducible helper is
+`scripts/render-layout-detail.py INPUT.gds OUTPUT.png [LAYER_PROPERTIES.lyp]`.
+Its view covers x=80..230 µm, y=244..319 µm; no circuit geometry was changed.

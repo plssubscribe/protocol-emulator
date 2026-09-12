@@ -53,7 +53,9 @@ Keep each milestone runnable. Explain new concepts at the change that needs them
 The repository is published at https://github.com/plssubscribe/protocol-emulator
 on `milestone/uart-tx`; `template` records upstream. Author metadata is Erik Newsham.
 The first GDS attempts stop at metadata validation because the inherited CMOS5L
-support tools do not provide the required 8x4 floorplan. See
+support tools do not provide the required 8x4 floorplan. A separate supported
+8x2 preview now has a real [chip layout image](docs/images/uart-cmos5l-8x2-preview.png),
+passing precheck and gate simulation. The competition baseline remains 8x4. See
 [the physical-build record](docs/physical-build.md). Before submission, choose a
 unique top-module name and complete the physical checks. Configure GitHub Pages
 as required by the template viewer. Passing simulation does not establish physical timing or
