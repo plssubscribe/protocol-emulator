@@ -1,0 +1,102 @@
+{
+  "date": "2026-09-12",
+  "scope": "standalone synchronous core; no Tiny Tapeout host integration",
+  "synthesis": {
+    "kind": "generic synthesis, not CMOS5L mapping or timing",
+    "tool": "Yosys 0.69 (git sha1 9f75ca1f9, Release, Clang /workspace/YoWASP/yosys/wasi-sdk-33.0-x86_64-linux/share/cmake/../..//bin/clang++ 22.1.0)",
+    "source_sha256": "eba37aeeeb781b4b8e1b50b71b85e03c5b5fe6db86cf1f6c0a6906460cd5a9bf",
+    "cells": 5151,
+    "flip_flops": 1528,
+    "cells_by_type": {
+      "$_ANDNOT_": 130,
+      "$_AND_": 1033,
+      "$_DFFE_PP_": 1280,
+      "$_MUX_": 559,
+      "$_NAND_": 1016,
+      "$_NOR_": 202,
+      "$_NOT_": 14,
+      "$_ORNOT_": 318,
+      "$_OR_": 305,
+      "$_SDFFE_PN0P_": 247,
+      "$_SDFF_PN0_": 1,
+      "$_XNOR_": 24,
+      "$_XOR_": 22
+    },
+    "structural_check": "passed"
+  },
+  "rtl_tests": [
+    "loaded_programs_and_original_model",
+    "inclusive_deadlines_and_random_programs",
+    "programmed_uart_independent_wire_oracle",
+    "loader_reset_abort_and_faults",
+    "maximum_duration_and_pc_wrap",
+    "outputs_are_registered"
+  ],
+  "generic_netlist_tests": [
+    "loaded_programs_and_original_model",
+    "inclusive_deadlines_and_random_programs",
+    "programmed_uart_independent_wire_oracle",
+    "loader_reset_abort_and_faults",
+    "maximum_duration_and_pc_wrap",
+    "outputs_are_registered"
+  ],
+  "uart_pin_tests": [
+    "uart_pin_contract"
+  ],
+  "mutations": [
+    {
+      "mutation": "miss_last_sample",
+      "test": "inclusive_deadlines_and_random_programs",
+      "killed": true,
+      "failure_types": [
+        "AssertionError"
+      ]
+    },
+    {
+      "mutation": "ignore_input_mask",
+      "test": "inclusive_deadlines_and_random_programs",
+      "killed": true,
+      "failure_types": [
+        "AssertionError"
+      ]
+    },
+    {
+      "mutation": "wrong_output_enable",
+      "test": "programmed_uart_independent_wire_oracle",
+      "killed": true,
+      "failure_types": [
+        "AssertionError"
+      ]
+    },
+    {
+      "mutation": "allow_live_write",
+      "test": "loader_reset_abort_and_faults",
+      "killed": true,
+      "failure_types": [
+        "AssertionError"
+      ]
+    }
+  ],
+  "formal": {
+    "result": "passed",
+    "depth": 12,
+    "timeout_reachable_by_step": 8,
+    "kind": "bounded safety, not induction",
+    "assumptions": "one initial synchronous reset; defined arbitrary inputs and initial state",
+    "properties": [
+      "idle releases enables",
+      "done excludes running",
+      "synchronous reset clears outputs and execution",
+      "abort stops and releases",
+      "terminal record stays stable until restart/reset",
+      "load wins over simultaneous start"
+    ]
+  },
+  "physical_checks": "No new CMOS5L mapping, placement/routing, STA, DRC, LVS or PDK gate simulation",
+  "source_hashes": {
+    "src/witness_core.v": "eba37aeeeb781b4b8e1b50b71b85e03c5b5fe6db86cf1f6c0a6906460cd5a9bf",
+    "tools/witness_isa.py": "22f8c8782518f2f1ae2f7b462dec622618e2874b685ee1f312af1d521923c383",
+    "test/engine/test_engine.py": "def77e07839e91796f5bcfa63b489167f86f5859b47fab681411be70ce59512f",
+    "test/formal/witness_safety.v": "3e1f96feaee440193cb70d618762e6e812fd37e40c1a6a55afad10583c3bfe49"
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "date": "2026-09-13",
+  "scope": "Icarus RTL public-pin simulation",
+  "normal_exchanges": 12,
+  "corrupted_responses": 4,
+  "exact_replays": 4,
+  "model_tests": 11,
+  "failures": [
+    {
+      "mode": 0,
+      "witness": {
+        "unlocked": true,
+        "host_error": false,
+        "time_wrapped": false,
+        "running": false,
+        "done": true,
+        "status": 1,
+        "cycle": 71,
+        "pc": 12,
+        "observed": 1,
+        "samples": 1,
+        "word": 137439021064
+      }
+    },
+    {
+      "mode": 1,
+      "witness": {
+        "unlocked": true,
+        "host_error": false,
+        "time_wrapped": false,
+        "running": false,
+        "done": true,
+        "status": 1,
+        "cycle": 79,
+        "pc": 13,
+        "observed": 0,
+        "samples": 1,
+        "word": 137439021064
+      }
+    },
+    {
+      "mode": 2,
+      "witness": {
+        "unlocked": true,
+        "host_error": false,
+        "time_wrapped": false,
+        "running": false,
+        "done": true,
+        "status": 1,
+        "cycle": 71,
+        "pc": 12,
+        "observed": 0,
+        "samples": 1,
+        "word": 137439021064
+      }
+    },
+    {
+      "mode": 3,
+      "witness": {
+        "unlocked": true,
+        "host_error": false,
+        "time_wrapped": false,
+        "running": false,
+        "done": true,
+        "status": 1,
+        "cycle": 79,
+        "pc": 13,
+        "observed": 1,
+        "samples": 1,
+        "word": 137439021064
+      }
+    }
+  ],
+  "source_sha256": {
+    "tools/spi_lab.py": "1bf22a44a1ef6fa9f417ac631f166de0bd189b9a9bfa76dd7496907f10b65618",
+    "test/test_spi.py": "0d0fad22861509921b603d3be16e6535a6aca2b0a5d69f529c1736f1fa45a698",
+    "src/project.v": "422ee25a27d0867e2b05cc215fb9113553abc355e451cf21762c18bfa1d1c9b3",
+    "src/witness_core.v": "eba37aeeeb781b4b8e1b50b71b85e03c5b5fe6db86cf1f6c0a6906460cd5a9bf",
+    "src/witness_host_spi.v": "45e3904957e55239c23b3904985705024e100ee847045910f5dab5fd4dc5405e",
+    "src/uart_tx.v": "81ae76dab55beebf50236c749b29940548815642047f268abaa6a83ff8e5fb28"
+  },
+  "artifact_sha256": "46b853bbfce96ee5cb5838ba792385a22e8a97f5a2744afee957515518f5668b",
+  "physical_checks_run": []
+}

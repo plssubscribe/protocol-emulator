@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="410" viewBox="0 0 1000 410">
+<rect width="1000" height="410" fill="#101827"/>
+<g font-family="Arial, sans-serif" fill="#e6edf7">
+<text x="25.0" y="34.0" font-size="23" fill="#e6edf7">A 20-cycle hold exposes a shortened I²C clock</text>
+<text x="25.0" y="58.0" font-size="14" fill="#9eafc7">Actual RTL pin trace · accelerated digital fixture · ideal pull-ups</text>
+<path d="M205.0,85 V325" stroke="#26344a"/>
+<text x="199.0" y="345.0" font-size="11" fill="#9eafc7">10</text>
+<path d="M281.0,85 V325" stroke="#26344a"/>
+<text x="275.0" y="345.0" font-size="11" fill="#9eafc7">15</text>
+<path d="M357.0,85 V325" stroke="#26344a"/>
+<text x="351.0" y="345.0" font-size="11" fill="#9eafc7">20</text>
+<path d="M433.0,85 V325" stroke="#26344a"/>
+<text x="427.0" y="345.0" font-size="11" fill="#9eafc7">25</text>
+<path d="M509.0,85 V325" stroke="#26344a"/>
+<text x="503.0" y="345.0" font-size="11" fill="#9eafc7">30</text>
+<path d="M585.0,85 V325" stroke="#26344a"/>
+<text x="579.0" y="345.0" font-size="11" fill="#9eafc7">35</text>
+<path d="M661.0,85 V325" stroke="#26344a"/>
+<text x="655.0" y="345.0" font-size="11" fill="#9eafc7">40</text>
+<path d="M737.0,85 V325" stroke="#26344a"/>
+<text x="731.0" y="345.0" font-size="11" fill="#9eafc7">45</text>
+<path d="M813.0,85 V325" stroke="#26344a"/>
+<text x="807.0" y="345.0" font-size="11" fill="#9eafc7">50</text>
+<path d="M889.0,85 V325" stroke="#26344a"/>
+<text x="883.0" y="345.0" font-size="11" fill="#9eafc7">55</text>
+<path d="M965.0,85 V325" stroke="#26344a"/>
+<text x="959.0" y="345.0" font-size="11" fill="#9eafc7">60</text>
+<text x="25.0" y="112.0" font-size="14" fill="#86b7ff">Controller release SCL</text>
+<path d="M205.0,98 H220.2 V98 H235.4 V124 H250.6 V124 H265.8 V124 H281.0 V124 H296.2 V124 H311.4 V124 H326.6 V124 H341.8 V124 H357.0 V124 H372.2 V124 H387.4 V124 H402.6 V124 H417.8 V98 H433.0 V98 H448.2 V98 H463.4 V98 H478.6 V98 H493.8 V98 H509.0 V98 H524.2 V98 H539.4 V98 H554.6 V98 H569.8 V98 H585.0 V98 H600.2 V124 H615.4 V124 H630.6 V124 H645.8 V124 H661.0 V124 H676.2 V124 H691.4 V124 H706.6 V124 H721.8 V124 H737.0 V124 H752.2 V124 H767.4 V124 H782.6 V98 H797.8 V98 H813.0 V98 H828.2 V98 H843.4 V98 H858.6 V98 H873.8 V98 H889.0 V98 H904.2 V98 H919.4 V98 H934.6 V98 H949.8 V98 H965.0 V124" stroke="#86b7ff" stroke-width="2.5" fill="none"/>
+<text x="25.0" y="168.0" font-size="14" fill="#be9cff">Target release SCL</text>
+<path d="M205.0,154 H220.2 V154 H235.4 V154 H250.6 V154 H265.8 V154 H281.0 V180 H296.2 V180 H311.4 V180 H326.6 V180 H341.8 V180 H357.0 V180 H372.2 V180 H387.4 V180 H402.6 V180 H417.8 V180 H433.0 V180 H448.2 V180 H463.4 V180 H478.6 V180 H493.8 V180 H509.0 V180 H524.2 V180 H539.4 V180 H554.6 V180 H569.8 V180 H585.0 V154 H600.2 V154 H615.4 V154 H630.6 V154 H645.8 V154 H661.0 V154 H676.2 V154 H691.4 V154 H706.6 V154 H721.8 V154 H737.0 V154 H752.2 V154 H767.4 V154 H782.6 V154 H797.8 V154 H813.0 V154 H828.2 V154 H843.4 V154 H858.6 V154 H873.8 V154 H889.0 V154 H904.2 V154 H919.4 V154 H934.6 V154 H949.8 V154 H965.0 V154" stroke="#be9cff" stroke-width="2.5" fill="none"/>
+<text x="25.0" y="224.0" font-size="14" fill="#ffb86b">Resolved SCL</text>
+<path d="M205.0,210 H220.2 V210 H235.4 V236 H250.6 V236 H265.8 V236 H281.0 V236 H296.2 V236 H311.4 V236 H326.6 V236 H341.8 V236 H357.0 V236 H372.2 V236 H387.4 V236 H402.6 V236 H417.8 V236 H433.0 V236 H448.2 V236 H463.4 V236 H478.6 V236 H493.8 V236 H509.0 V236 H524.2 V236 H539.4 V236 H554.6 V236 H569.8 V236 H585.0 V210 H600.2 V236 H615.4 V236 H630.6 V236 H645.8 V236 H661.0 V236 H676.2 V236 H691.4 V236 H706.6 V236 H721.8 V236 H737.0 V236 H752.2 V236 H767.4 V236 H782.6 V210 H797.8 V210 H813.0 V210 H828.2 V210 H843.4 V210 H858.6 V210 H873.8 V210 H889.0 V210 H904.2 V210 H919.4 V210 H934.6 V210 H949.8 V210 H965.0 V236" stroke="#ffb86b" stroke-width="2.5" fill="none"/>
+<text x="25.0" y="280.0" font-size="14" fill="#66dbb7">Resolved SDA</text>
+<path d="M205.0,292 H220.2 V292 H235.4 V266 H250.6 V266 H265.8 V266 H281.0 V266 H296.2 V266 H311.4 V266 H326.6 V266 H341.8 V266 H357.0 V266 H372.2 V266 H387.4 V266 H402.6 V266 H417.8 V266 H433.0 V266 H448.2 V266 H463.4 V266 H478.6 V266 H493.8 V266 H509.0 V266 H524.2 V266 H539.4 V266 H554.6 V266 H569.8 V266 H585.0 V266 H600.2 V292 H615.4 V292 H630.6 V292 H645.8 V292 H661.0 V292 H676.2 V292 H691.4 V292 H706.6 V292 H721.8 V292 H737.0 V292 H752.2 V292 H767.4 V292 H782.6 V292 H797.8 V292 H813.0 V292 H828.2 V292 H843.4 V292 H858.6 V292 H873.8 V292 H889.0 V292 H904.2 V292 H919.4 V292 H934.6 V292 H949.8 V292 H965.0 V266" stroke="#66dbb7" stroke-width="2.5" fill="none"/>
+<path d="M585.0,84 V325" stroke="#ff6f7c" stroke-dasharray="4 4"/>
+<text x="25.0" y="373.0" font-size="16" fill="#e6edf7">First resolved SCL high: 1 cycle(s); configured controller high: 12 cycles.</text>
+<text x="25.0" y="396.0" font-size="14" fill="#9eafc7">The faulty controller counts through the hold. PC 5 then records a missed data expectation.</text>
+</g>
+<!-- Source SHA256: 572a25ccbbb2e153b8d523b5755556c288df130bb5239bf41951e0e40063cf2f -->
+</svg>

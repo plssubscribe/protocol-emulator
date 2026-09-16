@@ -1,0 +1,96 @@
+{
+  "date": "2026-09-14",
+  "mapping": {
+    "scope": "CMOS5L typical-corner library mapping; not physical implementation",
+    "tool": "Yosys 0.69 (git sha1 9f75ca1f9, Release, Clang /workspace/YoWASP/yosys/wasi-sdk-33.0-x86_64-linux/share/cmake/../..//bin/clang++ 22.1.0)",
+    "process_revision": "ae7613984daf3ac2b14897321399df497278068f",
+    "library_url": "https://raw.githubusercontent.com/IHP-GmbH/ihp-sg13cmos5l/ae7613984daf3ac2b14897321399df497278068f/libs.ref/sg13cmos5l_stdcell/lib/sg13cmos5l_stdcell_typ_1p20V_25C.lib",
+    "excluded_cells": [
+      "sg13cmos5l_lgcp_1",
+      "sg13cmos5l_sighold",
+      "sg13cmos5l_slgcp_1",
+      "sg13cmos5l_sdfbbp_1",
+      "sg13cmos5l_dfrbp_2"
+    ],
+    "library_sha256": "ed101ac8140270f1e376ef4eb45b12e26c44db109e26aad69b1b6f89e7428cf0",
+    "source_sha256": {
+      "src/project.v": "b4335a890a0c3a8cae0d6aa4d7dacb8cb7b40442534c2f657a6c4e131c1c03e2",
+      "src/uart_tx.v": "81ae76dab55beebf50236c749b29940548815642047f268abaa6a83ff8e5fb28",
+      "src/witness_core.v": "763be4d4b048bb6a1089d5b18c8a075d1be723fe14fccf18f83128075f962c3b",
+      "src/witness_host_spi.v": "1082f02bd52221e5be950f658a43235467e6173983c7bbca864f7f8a18106dd3"
+    },
+    "cells": 8463,
+    "cell_area_um2": 163546.803,
+    "cells_by_type": {
+      "sg13cmos5l_inv_1": 541,
+      "sg13cmos5l_and2_1": 98,
+      "sg13cmos5l_nor3_1": 87,
+      "sg13cmos5l_nand2b_1": 39,
+      "sg13cmos5l_or2_1": 72,
+      "sg13cmos5l_xor2_1": 83,
+      "sg13cmos5l_nor4_1": 49,
+      "sg13cmos5l_or4_1": 10,
+      "sg13cmos5l_nand2_1": 879,
+      "sg13cmos5l_nor2_1": 1020,
+      "sg13cmos5l_o21ai_1": 1173,
+      "sg13cmos5l_a21oi_1": 1214,
+      "sg13cmos5l_or3_1": 6,
+      "sg13cmos5l_xnor2_1": 301,
+      "sg13cmos5l_nand3_1": 88,
+      "sg13cmos5l_nand3b_1": 7,
+      "sg13cmos5l_nand4_1": 40,
+      "sg13cmos5l_nor2b_1": 30,
+      "sg13cmos5l_a21o_1": 59,
+      "sg13cmos5l_a221oi_1": 83,
+      "sg13cmos5l_and3_1": 14,
+      "sg13cmos5l_a22oi_1": 181,
+      "sg13cmos5l_and4_1": 14,
+      "sg13cmos5l_mux4_1": 330,
+      "sg13cmos5l_mux2_1": 81,
+      "sg13cmos5l_dfrbpq_1": 1964
+    },
+    "clock_target_ns": 20,
+    "timing_constraint_applied": false,
+    "checks_run": [
+      "library mapping",
+      "Yosys structural check",
+      "mapped-cell completeness"
+    ],
+    "checks_not_run": [
+      "placement",
+      "routing",
+      "static timing",
+      "DRC",
+      "LVS",
+      "PDK gate simulation"
+    ]
+  },
+  "simulation": {
+    "result": "passed",
+    "kind": "selected functional PDK-cell-model simulation; no SDF or timing verification",
+    "groups": [
+      "host_load_execute_and_witness",
+      "capture_overflow_readback_and_reset",
+      "spi_unknown_response_capture"
+    ],
+    "simulated_ns": 5607440.0,
+    "capture_records_match_rtl": true,
+    "model_sha256": "919ceb02b239bdcfc04b33984a5549babfed3c9fbdb5445295cac1c7b2f113c2",
+    "compiler_limitation": "Icarus warned that edge-sensitive ifnone timing paths are unsupported"
+  },
+  "upstream": {
+    "action_revision": "45187a61556e197732a236b3f56acd2c800b9e0e",
+    "support_revision": "da63c9927411e3aca350977d653d24bbf5bca972",
+    "size_8x4_present": false,
+    "def_8x4_present": false
+  },
+  "physical_checks_run": [],
+  "remaining": [
+    "accepted CMOS5L 8x4 support package",
+    "placement and routing",
+    "constrained static timing",
+    "DRC/LVS/precheck",
+    "post-route simulation"
+  ],
+  "note": "Mapping summary describes its own invocation; the selected functional PDK simulation listed here ran afterward. No RTL changes in this checkpoint."
+}

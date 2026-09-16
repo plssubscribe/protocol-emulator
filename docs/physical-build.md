@@ -124,3 +124,37 @@ directly from the final GDS with KLayout 0.29.12 and the pinned process's
 `libs.tech/klayout/tech/sg13cmos5l.lyp` layer colors. The reproducible helper is
 `scripts/render-layout-detail.py INPUT.gds OUTPUT.png [LAYER_PROPERTIES.lyp]`.
 Its view covers x=80..230 µm, y=244..319 µm; no circuit geometry was changed.
+
+## Standalone Witness core: generic checks only
+
+On 2026-09-12, the new standalone core passed generic Yosys synthesis, structural
+checking and zero-delay generic netlist simulation. It contains 5,151 generic cells,
+including 1,528 flip-flops. See [Witness evidence](witness-evidence.md) for exact
+source hashes, tests and limits. The Tiny Tapeout top remains the M1 UART; none of
+this core's logic has been placed or routed in the committed competition design.
+
+No new CMOS5L mapping, physical timing, placement/routing, DRC, LVS, precheck or
+PDK gate simulation ran for the core. The earlier 8x2 UART preview does not validate
+it. The required 8x4 floorplan/tooling issue remains unresolved.
+
+## Integrated host transport: generic checks (2026-09-13)
+
+The top now includes the SPI host, protocol input synchronizers and Witness core,
+while keeping the original UART. Generic synthesis reports 6,769 total cells,
+including 1,888 flip-flops, summed through the module hierarchy. Public-pin UART
+and host tests pass on the generic netlist. See
+[integrated evidence](integrated-witness-evidence.md) for scope and source hashes.
+
+No new CMOS5L mapping, physical timing, placement/routing, DRC, LVS, precheck or
+PDK gate simulation ran. The previous UART-only layout image is historical and
+must not be presented as the current integrated chip. The recorded 8x4 tooling
+blocker remains open; 50 MHz is still the target, not a proven clock rate.
+
+
+## Integrated CMOS5L library mapping (2026-09-14)
+
+The current capture-enabled design now maps to the pinned CMOS5L typical 1.20 V
+library: 8,463 cells and 163,546.803 µm² of summed library cell area. See the
+[new mapping evidence](cmos5l-mapping-evidence.md) for commands, source provenance,
+checks and limitations. This is not placed/routed area or timing closure.
+The required 8x4 upstream support remains absent at the rechecked revisions.

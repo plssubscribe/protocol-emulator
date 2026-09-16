@@ -14,3 +14,8 @@ test/gate_level_netlist.v
 
 .venv/
 work/
+
+__pycache__/
+
+test/engine/sim_build/
+test/engine/results.xml

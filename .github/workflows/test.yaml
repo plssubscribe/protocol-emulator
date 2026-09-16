@@ -21,21 +21,25 @@ jobs:
 
       - name: Install Python packages
         shell: bash
-        run: pip install -r test/requirements.txt
+        run: pip install -r test/requirements.txt -r test/synthesis-requirements.txt
 
       - name: Run tests
         run: |
-          make unit
-          cd test
-          make clean
-          make
-          # make will return success even if the test fails, so check for failure in the results.xml
-          ! grep failure results.xml
+          make test
+          make mutations
+          make synth-check
+          make formal
+          make synth-top-check
+          make host-mutations
 
       - name: Test Summary
         uses: test-summary/action@v2.4
         with:
-          paths: "test/results.xml"
+          paths: |
+            test/results.xml
+            test/engine/results.xml
+            work/synthesis/results.xml
+            work/synthesis-top/results.xml
         if: always()
 
       - name: upload waveform and test results
@@ -47,3 +51,23 @@ jobs:
             test/tb.fst
             test/results.xml
             test/output/*
+            test/engine/results.xml
+            work/rtl-witness.json
+            work/mutations/summary.json
+            work/mutations/*/simulation.log
+            work/synthesis/summary.json
+            work/synthesis/results.xml
+            work/synthesis/yosys.log
+            work/formal/summary.json
+            work/formal/yosys.log
+            work/formal/*.vcd
+            work/synthesis-top/summary.json
+            work/synthesis-top/results.xml
+            work/synthesis-top/yosys.log
+            work/pin-host-witness.json
+            work/host-mutations/summary.json
+            work/host-mutations/*/simulation.log
+            work/i2c-witness.json
+            work/i2c-witness-smoke.json
+            work/spi-witness.json
+            work/spi-capture.json

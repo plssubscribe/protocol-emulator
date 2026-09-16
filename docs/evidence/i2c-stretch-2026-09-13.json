@@ -1,0 +1,767 @@
+{
+  "date": "2026-09-13",
+  "scope": "project-authored I2C address-probe controller, deliberate stretch fault",
+  "rtl_probe_transactions": 101,
+  "generic_netlist_probe_transactions": 13,
+  "sweep": [
+    {
+      "stretch": 0,
+      "good_status": 0,
+      "faulty_status": 0
+    },
+    {
+      "stretch": 1,
+      "good_status": 0,
+      "faulty_status": 0
+    },
+    {
+      "stretch": 2,
+      "good_status": 0,
+      "faulty_status": 0
+    },
+    {
+      "stretch": 3,
+      "good_status": 0,
+      "faulty_status": 0
+    },
+    {
+      "stretch": 4,
+      "good_status": 0,
+      "faulty_status": 0
+    },
+    {
+      "stretch": 5,
+      "good_status": 0,
+      "faulty_status": 0
+    },
+    {
+      "stretch": 6,
+      "good_status": 0,
+      "faulty_status": 0
+    },
+    {
+      "stretch": 7,
+      "good_status": 0,
+      "faulty_status": 0
+    },
+    {
+      "stretch": 8,
+      "good_status": 0,
+      "faulty_status": 0
+    },
+    {
+      "stretch": 9,
+      "good_status": 0,
+      "faulty_status": 0
+    },
+    {
+      "stretch": 10,
+      "good_status": 0,
+      "faulty_status": 0
+    },
+    {
+      "stretch": 11,
+      "good_status": 0,
+      "faulty_status": 0
+    },
+    {
+      "stretch": 12,
+      "good_status": 0,
+      "faulty_status": 0
+    },
+    {
+      "stretch": 13,
+      "good_status": 0,
+      "faulty_status": 0
+    },
+    {
+      "stretch": 14,
+      "good_status": 0,
+      "faulty_status": 0
+    },
+    {
+      "stretch": 15,
+      "good_status": 0,
+      "faulty_status": 0
+    },
+    {
+      "stretch": 16,
+      "good_status": 0,
+      "faulty_status": 0
+    },
+    {
+      "stretch": 17,
+      "good_status": 0,
+      "faulty_status": 0
+    },
+    {
+      "stretch": 18,
+      "good_status": 0,
+      "faulty_status": 0
+    },
+    {
+      "stretch": 19,
+      "good_status": 0,
+      "faulty_status": 0
+    },
+    {
+      "stretch": 20,
+      "good_status": 0,
+      "faulty_status": 1
+    },
+    {
+      "stretch": 21,
+      "good_status": 0,
+      "faulty_status": 1
+    },
+    {
+      "stretch": 22,
+      "good_status": 0,
+      "faulty_status": 1
+    },
+    {
+      "stretch": 23,
+      "good_status": 0,
+      "faulty_status": 1
+    },
+    {
+      "stretch": 24,
+      "good_status": 0,
+      "faulty_status": 1
+    },
+    {
+      "stretch": 25,
+      "good_status": 0,
+      "faulty_status": 1
+    },
+    {
+      "stretch": 26,
+      "good_status": 0,
+      "faulty_status": 1
+    },
+    {
+      "stretch": 27,
+      "good_status": 0,
+      "faulty_status": 1
+    },
+    {
+      "stretch": 28,
+      "good_status": 0,
+      "faulty_status": 1
+    },
+    {
+      "stretch": 29,
+      "good_status": 0,
+      "faulty_status": 1
+    },
+    {
+      "stretch": 30,
+      "good_status": 0,
+      "faulty_status": 1
+    },
+    {
+      "stretch": 31,
+      "good_status": 0,
+      "faulty_status": 1
+    },
+    {
+      "stretch": 32,
+      "good_status": 0,
+      "faulty_status": 1
+    },
+    {
+      "stretch": 33,
+      "good_status": 0,
+      "faulty_status": 1
+    },
+    {
+      "stretch": 34,
+      "good_status": 0,
+      "faulty_status": 1
+    },
+    {
+      "stretch": 35,
+      "good_status": 0,
+      "faulty_status": 1
+    },
+    {
+      "stretch": 36,
+      "good_status": 0,
+      "faulty_status": 1
+    },
+    {
+      "stretch": 37,
+      "good_status": 0,
+      "faulty_status": 1
+    },
+    {
+      "stretch": 38,
+      "good_status": 0,
+      "faulty_status": 1
+    },
+    {
+      "stretch": 39,
+      "good_status": 0,
+      "faulty_status": 1
+    },
+    {
+      "stretch": 40,
+      "good_status": 0,
+      "faulty_status": 1
+    },
+    {
+      "stretch": 41,
+      "good_status": 0,
+      "faulty_status": 1
+    },
+    {
+      "stretch": 42,
+      "good_status": 0,
+      "faulty_status": 1
+    },
+    {
+      "stretch": 43,
+      "good_status": 0,
+      "faulty_status": 1
+    },
+    {
+      "stretch": 44,
+      "good_status": 0,
+      "faulty_status": 1
+    },
+    {
+      "stretch": 45,
+      "good_status": 0,
+      "faulty_status": 1
+    },
+    {
+      "stretch": 46,
+      "good_status": 0,
+      "faulty_status": 1
+    },
+    {
+      "stretch": 47,
+      "good_status": 0,
+      "faulty_status": 1
+    },
+    {
+      "stretch": 48,
+      "good_status": 0,
+      "faulty_status": 1
+    }
+  ],
+  "generic_subset": [
+    0,
+    19,
+    20,
+    24,
+    48
+  ],
+  "first_failure": {
+    "stretch": 20,
+    "faulty": true,
+    "low": 12,
+    "high": 12,
+    "transfers": [
+      {
+        "bits": [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "address_byte": 160,
+        "ack": false
+      }
+    ],
+    "starts": 1,
+    "peer_ack": false,
+    "high_widths": [
+      1,
+      12,
+      12,
+      12,
+      12,
+      12,
+      12,
+      12,
+      12
+    ],
+    "witness": {
+      "unlocked": true,
+      "host_error": false,
+      "time_wrapped": false,
+      "running": false,
+      "done": true,
+      "status": 1,
+      "cycle": 562,
+      "pc": 5,
+      "observed": 0,
+      "samples": 1,
+      "word": 137439019522
+    }
+  },
+  "standard_mode": {
+    "good": {
+      "stretch": 800,
+      "faulty": false,
+      "low": 260,
+      "high": 240,
+      "transfers": [
+        {
+          "bits": [
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "address_byte": 160,
+          "ack": true
+        }
+      ],
+      "starts": 1,
+      "peer_ack": true,
+      "high_widths": [
+        240,
+        240,
+        240,
+        240,
+        240,
+        240,
+        240,
+        240,
+        240
+      ],
+      "witness": {
+        "unlocked": true,
+        "host_error": false,
+        "time_wrapped": false,
+        "running": false,
+        "done": true,
+        "status": 0,
+        "cycle": 5810,
+        "pc": 31,
+        "observed": 0,
+        "samples": 0,
+        "word": 0
+      },
+      "transitions": [
+        {
+          "cycle": 0,
+          "bus": 1,
+          "target_low": 0,
+          "controller_low": 2
+        },
+        {
+          "cycle": 240,
+          "bus": 2,
+          "target_low": 0,
+          "controller_low": 1
+        },
+        {
+          "cycle": 243,
+          "bus": 2,
+          "target_low": 1,
+          "controller_low": 1
+        },
+        {
+          "cycle": 500,
+          "bus": 2,
+          "target_low": 1,
+          "controller_low": 0
+        },
+        {
+          "cycle": 1043,
+          "bus": 3,
+          "target_low": 0,
+          "controller_low": 0
+        },
+        {
+          "cycle": 1283,
+          "bus": 0,
+          "target_low": 0,
+          "controller_low": 3
+        },
+        {
+          "cycle": 1543,
+          "bus": 1,
+          "target_low": 0,
+          "controller_low": 2
+        },
+        {
+          "cycle": 1783,
+          "bus": 2,
+          "target_low": 0,
+          "controller_low": 1
+        },
+        {
+          "cycle": 2043,
+          "bus": 3,
+          "target_low": 0,
+          "controller_low": 0
+        },
+        {
+          "cycle": 2283,
+          "bus": 0,
+          "target_low": 0,
+          "controller_low": 3
+        },
+        {
+          "cycle": 2543,
+          "bus": 1,
+          "target_low": 0,
+          "controller_low": 2
+        },
+        {
+          "cycle": 2783,
+          "bus": 0,
+          "target_low": 0,
+          "controller_low": 3
+        },
+        {
+          "cycle": 3043,
+          "bus": 1,
+          "target_low": 0,
+          "controller_low": 2
+        },
+        {
+          "cycle": 3283,
+          "bus": 0,
+          "target_low": 0,
+          "controller_low": 3
+        },
+        {
+          "cycle": 3543,
+          "bus": 1,
+          "target_low": 0,
+          "controller_low": 2
+        },
+        {
+          "cycle": 3783,
+          "bus": 0,
+          "target_low": 0,
+          "controller_low": 3
+        },
+        {
+          "cycle": 4043,
+          "bus": 1,
+          "target_low": 0,
+          "controller_low": 2
+        },
+        {
+          "cycle": 4283,
+          "bus": 0,
+          "target_low": 0,
+          "controller_low": 3
+        },
+        {
+          "cycle": 4543,
+          "bus": 1,
+          "target_low": 0,
+          "controller_low": 2
+        },
+        {
+          "cycle": 4783,
+          "bus": 2,
+          "target_low": 0,
+          "controller_low": 1
+        },
+        {
+          "cycle": 4786,
+          "bus": 0,
+          "target_low": 2,
+          "controller_low": 1
+        },
+        {
+          "cycle": 5043,
+          "bus": 1,
+          "target_low": 2,
+          "controller_low": 0
+        },
+        {
+          "cycle": 5283,
+          "bus": 0,
+          "target_low": 2,
+          "controller_low": 3
+        },
+        {
+          "cycle": 5286,
+          "bus": 0,
+          "target_low": 0,
+          "controller_low": 3
+        },
+        {
+          "cycle": 5543,
+          "bus": 1,
+          "target_low": 0,
+          "controller_low": 2
+        },
+        {
+          "cycle": 5783,
+          "bus": 3,
+          "target_low": 0,
+          "controller_low": 0
+        }
+      ]
+    },
+    "faulty": {
+      "stretch": 800,
+      "faulty": true,
+      "low": 260,
+      "high": 240,
+      "transfers": [
+        {
+          "bits": [
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "address_byte": 65,
+          "ack": null
+        }
+      ],
+      "starts": 1,
+      "peer_ack": false,
+      "high_widths": [
+        197,
+        240,
+        240,
+        240,
+        240,
+        240,
+        240,
+        240
+      ],
+      "witness": {
+        "unlocked": true,
+        "host_error": false,
+        "time_wrapped": false,
+        "running": false,
+        "done": true,
+        "status": 1,
+        "cycle": 1570,
+        "pc": 5,
+        "observed": 1,
+        "samples": 1,
+        "word": 137439019522
+      },
+      "transitions": [
+        {
+          "cycle": 0,
+          "bus": 1,
+          "target_low": 0,
+          "controller_low": 2
+        },
+        {
+          "cycle": 240,
+          "bus": 2,
+          "target_low": 0,
+          "controller_low": 1
+        },
+        {
+          "cycle": 243,
+          "bus": 2,
+          "target_low": 1,
+          "controller_low": 1
+        },
+        {
+          "cycle": 500,
+          "bus": 2,
+          "target_low": 1,
+          "controller_low": 0
+        },
+        {
+          "cycle": 740,
+          "bus": 0,
+          "target_low": 1,
+          "controller_low": 3
+        },
+        {
+          "cycle": 1000,
+          "bus": 0,
+          "target_low": 1,
+          "controller_low": 2
+        },
+        {
+          "cycle": 1043,
+          "bus": 1,
+          "target_low": 0,
+          "controller_low": 2
+        },
+        {
+          "cycle": 1240,
+          "bus": 2,
+          "target_low": 0,
+          "controller_low": 1
+        },
+        {
+          "cycle": 1500,
+          "bus": 3,
+          "target_low": 0,
+          "controller_low": 0
+        },
+        {
+          "cycle": 1740,
+          "bus": 0,
+          "target_low": 0,
+          "controller_low": 3
+        },
+        {
+          "cycle": 2000,
+          "bus": 1,
+          "target_low": 0,
+          "controller_low": 2
+        },
+        {
+          "cycle": 2240,
+          "bus": 0,
+          "target_low": 0,
+          "controller_low": 3
+        },
+        {
+          "cycle": 2500,
+          "bus": 1,
+          "target_low": 0,
+          "controller_low": 2
+        },
+        {
+          "cycle": 2740,
+          "bus": 0,
+          "target_low": 0,
+          "controller_low": 3
+        },
+        {
+          "cycle": 3000,
+          "bus": 1,
+          "target_low": 0,
+          "controller_low": 2
+        },
+        {
+          "cycle": 3240,
+          "bus": 0,
+          "target_low": 0,
+          "controller_low": 3
+        },
+        {
+          "cycle": 3500,
+          "bus": 1,
+          "target_low": 0,
+          "controller_low": 2
+        },
+        {
+          "cycle": 3740,
+          "bus": 0,
+          "target_low": 0,
+          "controller_low": 3
+        },
+        {
+          "cycle": 4000,
+          "bus": 1,
+          "target_low": 0,
+          "controller_low": 2
+        },
+        {
+          "cycle": 4240,
+          "bus": 2,
+          "target_low": 0,
+          "controller_low": 1
+        },
+        {
+          "cycle": 4500,
+          "bus": 3,
+          "target_low": 0,
+          "controller_low": 0
+        },
+        {
+          "cycle": 4740,
+          "bus": 0,
+          "target_low": 0,
+          "controller_low": 3
+        },
+        {
+          "cycle": 5000,
+          "bus": 1,
+          "target_low": 0,
+          "controller_low": 2
+        },
+        {
+          "cycle": 5240,
+          "bus": 3,
+          "target_low": 0,
+          "controller_low": 0
+        }
+      ]
+    }
+  },
+  "replay_matched": true,
+  "rtl_netlist_records_identical": true,
+  "public_pin_rtl_tests": [
+    "uart_pin_contract",
+    "host_load_execute_and_witness",
+    "host_corrupt_frames_busy_abort_and_reset",
+    "host_synchronized_response_and_atomic_snapshot",
+    "i2c_stretch_sweep_and_replay"
+  ],
+  "generic_netlist_tests": [
+    "i2c_stretch_sweep_and_replay"
+  ],
+  "core_rtl_tests": [
+    "loaded_programs_and_original_model",
+    "inclusive_deadlines_and_random_programs",
+    "programmed_uart_independent_wire_oracle",
+    "loader_reset_abort_and_faults",
+    "maximum_duration_and_pc_wrap",
+    "outputs_are_registered"
+  ],
+  "host_mutations": [
+    {
+      "mutation": "ignore_crc",
+      "test": "host_corrupt_frames_busy_abort_and_reset",
+      "killed": true
+    },
+    {
+      "mutation": "ignore_frame_length",
+      "test": "host_corrupt_frames_busy_abort_and_reset",
+      "killed": true
+    },
+    {
+      "mutation": "write_while_locked",
+      "test": "host_load_execute_and_witness",
+      "killed": true
+    },
+    {
+      "mutation": "tear_snapshot",
+      "test": "host_synchronized_response_and_atomic_snapshot",
+      "killed": true
+    }
+  ],
+  "unchanged_rtl_hashes": {
+    "src/witness_core.v": "eba37aeeeb781b4b8e1b50b71b85e03c5b5fe6db86cf1f6c0a6906460cd5a9bf",
+    "src/witness_host_spi.v": "45e3904957e55239c23b3904985705024e100ee847045910f5dab5fd4dc5405e",
+    "src/uart_tx.v": "81ae76dab55beebf50236c749b29940548815642047f268abaa6a83ff8e5fb28",
+    "src/project.v": "422ee25a27d0867e2b05cc215fb9113553abc355e451cf21762c18bfa1d1c9b3"
+  },
+  "source_hashes": {
+    "tools/i2c_lab.py": "19c3cb11e234c63e5ba9922131f14966c8fd3b27a4cd62a5ae7bfdc316fb8d29",
+    "test/test_i2c.py": "e0376d182c89b5f171ea29226a0ae62c5d44097086eec2cfc4b7c004d9f3e247",
+    "test/model/test_i2c_lab.py": "bde1c7a14a4a8103f0f65bbd3721927f79f383c554f6d9c45544b19d36d2b529",
+    "scripts/render-i2c-witness.py": "b73613d9021617818aaefb0f5d5865adba7d6db64beabd6133dcca98edc3383a"
+  },
+  "full_trace_sha256": "572a25ccbbb2e153b8d523b5755556c288df130bb5239bf41951e0e40063cf2f",
+  "physical_checks": "No new synthesis, CMOS5L mapping, STA, place/route, DRC, LVS or hardware capture"
+}

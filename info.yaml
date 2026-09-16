@@ -1,14 +1,14 @@
 # Tiny Tapeout project information
 project:
-  title:        "Programmable protocol emulator — UART bring-up"      # Project title
+  title:        "Protocol Witness — programmable timing and failure capture"      # Project title
   author:       "Erik Newsham"      # Your name
   discord:      ""      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
-  description:  "Milestone 1: UART TX bring-up for a programmable protocol engine"      # One line description of what your project does
+  description:  "SPI-loaded programmable protocol timing engine with first-failure capture"      # One line description of what your project does
   language:     "Verilog" # other examples include SystemVerilog, Amaranth, VHDL, etc
   clock_hz:     50000000       # Clock frequency in Hz (or 0 if not applicable)
 
   # How many tiles your design occupies? A single tile is about 167x108 uM.
-  tiles: "8x4"          # Competition allocation: 8x4
+  tiles: "6x4"          # Organizer-approved allocation; ADR 0009
 
   # Your top module name must start with "tt_um_". Make it unique by including your github username:
   top_module:  "tt_um_protocol_emulator"
@@ -19,14 +19,16 @@ project:
   source_files:
     - "project.v"
     - "uart_tx.v"
+    - "witness_core.v"
+    - "witness_host_spi.v"
 
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 # This section is for the datasheet/website. Use descriptive names (e.g., RX, TX, MOSI, SCL, SEG_A, etc.).
 pinout:
   # Inputs
-  ui[0]: ""
-  ui[1]: ""
-  ui[2]: ""
+  ui[0]: "HOST_SCLK"
+  ui[1]: "HOST_MOSI"
+  ui[2]: "HOST_CS_N"
   ui[3]: ""
   ui[4]: ""
   ui[5]: ""
@@ -35,23 +37,23 @@ pinout:
 
   # Outputs
   uo[0]: "UART_TX"
-  uo[1]: ""
-  uo[2]: ""
-  uo[3]: ""
-  uo[4]: ""
+  uo[1]: "HOST_MISO"
+  uo[2]: "RUNNING"
+  uo[3]: "DONE"
+  uo[4]: "HOST_ERROR"
   uo[5]: ""
   uo[6]: ""
   uo[7]: ""
 
   # Bidirectional pins
-  uio[0]: ""
-  uio[1]: ""
-  uio[2]: ""
-  uio[3]: ""
-  uio[4]: ""
-  uio[5]: ""
-  uio[6]: ""
-  uio[7]: ""
+  uio[0]: "PROTOCOL_0"
+  uio[1]: "PROTOCOL_1"
+  uio[2]: "PROTOCOL_2"
+  uio[3]: "PROTOCOL_3"
+  uio[4]: "PROTOCOL_4"
+  uio[5]: "PROTOCOL_5"
+  uio[6]: "PROTOCOL_6"
+  uio[7]: "PROTOCOL_7"
 
 # Do not change!
 yaml_version: 6

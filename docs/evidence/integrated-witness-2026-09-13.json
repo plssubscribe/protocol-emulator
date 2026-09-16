@@ -1,0 +1,140 @@
+{
+  "date": "2026-09-13",
+  "scope": "integrated Tiny Tapeout public-pin simulation",
+  "synthesis": {
+    "top": "tt_um_protocol_emulator",
+    "kind": "generic synthesis, not CMOS5L mapping or timing",
+    "tool": "Yosys 0.69 (git sha1 9f75ca1f9, Release, Clang /workspace/YoWASP/yosys/wasi-sdk-33.0-x86_64-linux/share/cmake/../..//bin/clang++ 22.1.0)",
+    "source_sha256": "eba37aeeeb781b4b8e1b50b71b85e03c5b5fe6db86cf1f6c0a6906460cd5a9bf",
+    "source_hashes": {
+      "src/witness_core.v": "eba37aeeeb781b4b8e1b50b71b85e03c5b5fe6db86cf1f6c0a6906460cd5a9bf",
+      "src/witness_host_spi.v": "45e3904957e55239c23b3904985705024e100ee847045910f5dab5fd4dc5405e",
+      "src/uart_tx.v": "81ae76dab55beebf50236c749b29940548815642047f268abaa6a83ff8e5fb28",
+      "src/project.v": "422ee25a27d0867e2b05cc215fb9113553abc355e451cf21762c18bfa1d1c9b3"
+    },
+    "cells": 6769,
+    "flip_flops": 1888,
+    "cells_by_type": {
+      "$_ANDNOT_": 135,
+      "$_AND_": 1514,
+      "$_DFFE_PP_": 1280,
+      "$_MUX_": 463,
+      "$_NAND_": 1341,
+      "$_NOR_": 119,
+      "$_NOT_": 13,
+      "$_ORNOT_": 422,
+      "$_OR_": 545,
+      "$_SDFFE_PN0P_": 492,
+      "$_SDFFE_PN1P_": 9,
+      "$_SDFFE_PP0P_": 79,
+      "$_SDFF_PN0_": 22,
+      "$_SDFF_PN1_": 3,
+      "$_SDFF_PP0_": 3,
+      "$_XNOR_": 227,
+      "$_XOR_": 102
+    },
+    "structural_check": "passed"
+  },
+  "pin_rtl_tests": [
+    "uart_pin_contract",
+    "host_load_execute_and_witness",
+    "host_corrupt_frames_busy_abort_and_reset",
+    "host_synchronized_response_and_atomic_snapshot"
+  ],
+  "pin_generic_netlist_tests": [
+    "uart_pin_contract",
+    "host_load_execute_and_witness",
+    "host_corrupt_frames_busy_abort_and_reset",
+    "host_synchronized_response_and_atomic_snapshot"
+  ],
+  "core_rtl_tests": [
+    "loaded_programs_and_original_model",
+    "inclusive_deadlines_and_random_programs",
+    "programmed_uart_independent_wire_oracle",
+    "loader_reset_abort_and_faults",
+    "maximum_duration_and_pc_wrap",
+    "outputs_are_registered"
+  ],
+  "host_mutations": [
+    {
+      "mutation": "ignore_crc",
+      "test": "host_corrupt_frames_busy_abort_and_reset",
+      "killed": true
+    },
+    {
+      "mutation": "ignore_frame_length",
+      "test": "host_corrupt_frames_busy_abort_and_reset",
+      "killed": true
+    },
+    {
+      "mutation": "write_while_locked",
+      "test": "host_load_execute_and_witness",
+      "killed": true
+    },
+    {
+      "mutation": "tear_snapshot",
+      "test": "host_synchronized_response_and_atomic_snapshot",
+      "killed": true
+    }
+  ],
+  "core_mutations": [
+    {
+      "mutation": "miss_last_sample",
+      "test": "inclusive_deadlines_and_random_programs",
+      "killed": true,
+      "failure_types": [
+        "AssertionError"
+      ]
+    },
+    {
+      "mutation": "ignore_input_mask",
+      "test": "inclusive_deadlines_and_random_programs",
+      "killed": true,
+      "failure_types": [
+        "AssertionError"
+      ]
+    },
+    {
+      "mutation": "wrong_output_enable",
+      "test": "programmed_uart_independent_wire_oracle",
+      "killed": true,
+      "failure_types": [
+        "AssertionError"
+      ]
+    },
+    {
+      "mutation": "allow_live_write",
+      "test": "loader_reset_abort_and_faults",
+      "killed": true,
+      "failure_types": [
+        "AssertionError"
+      ]
+    }
+  ],
+  "core_bounded_formal": {
+    "result": "passed",
+    "depth": 12,
+    "timeout_reachable_by_step": 8,
+    "kind": "bounded safety, not induction",
+    "assumptions": "one initial synchronous reset; defined arbitrary inputs and initial state",
+    "properties": [
+      "idle releases enables",
+      "done excludes running",
+      "synchronous reset clears outputs and execution",
+      "abort stops and releases",
+      "terminal record stays stable until restart/reset",
+      "load wins over simultaneous start"
+    ]
+  },
+  "physical_checks": "No new CMOS5L mapping, STA, place/route, DRC, LVS, precheck or PDK gate simulation",
+  "sources": {
+    "src/project.v": "422ee25a27d0867e2b05cc215fb9113553abc355e451cf21762c18bfa1d1c9b3",
+    "src/witness_core.v": "eba37aeeeb781b4b8e1b50b71b85e03c5b5fe6db86cf1f6c0a6906460cd5a9bf",
+    "src/witness_host_spi.v": "45e3904957e55239c23b3904985705024e100ee847045910f5dab5fd4dc5405e",
+    "src/uart_tx.v": "81ae76dab55beebf50236c749b29940548815642047f268abaa6a83ff8e5fb28",
+    "tools/witness_host.py": "9e03e183523a3cdcfb3ce01abfdd2b42f602f20770d328e1abe0bb2575e95aa0",
+    "test/test_host.py": "4260e79b4a785e914c9c25aac9861a93aa9bd66e3947b3a45f39ca4b0417751a",
+    "info.yaml": "36e18855712246c03efb484e1532842496618ab0ec1711bd5d7108ec9fbee391",
+    "src/config.json": "4b192dffa877dcefa4ab969af9dedf105375921aa179c677524fa88ac94bb510"
+  }
+}

@@ -1,0 +1,4 @@
+# Optional portable generic synthesis, separate from mandatory simulation packages.
+yowasp-yosys==0.69.0.0.post1233
+yowasp-runtime==1.96
+wasmtime==47.0.1

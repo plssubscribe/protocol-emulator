@@ -1,0 +1,466 @@
+{
+  "date": "2026-09-13",
+  "decision": "ADR 0008",
+  "rtl": {
+    "result": "passed",
+    "groups": 7,
+    "names": [
+      "uart_pin_contract",
+      "host_load_execute_and_witness",
+      "host_corrupt_frames_busy_abort_and_reset",
+      "host_synchronized_response_and_atomic_snapshot",
+      "i2c_stretch_sweep_and_replay",
+      "spi_four_modes_and_replay",
+      "spi_unknown_response_capture"
+    ]
+  },
+  "additional_rtl": {
+    "result": "passed",
+    "groups": 1,
+    "names": [
+      "capture_overflow_readback_and_reset"
+    ]
+  },
+  "core": {
+    "result": "passed",
+    "groups": 7,
+    "names": [
+      "loaded_programs_and_original_model",
+      "inclusive_deadlines_and_random_programs",
+      "programmed_uart_independent_wire_oracle",
+      "loader_reset_abort_and_faults",
+      "maximum_duration_and_pc_wrap",
+      "outputs_are_registered",
+      "timed_capture_capacity_and_lifecycle"
+    ]
+  },
+  "core_netlist": {
+    "result": "passed",
+    "groups": 7,
+    "names": [
+      "loaded_programs_and_original_model",
+      "inclusive_deadlines_and_random_programs",
+      "programmed_uart_independent_wire_oracle",
+      "loader_reset_abort_and_faults",
+      "maximum_duration_and_pc_wrap",
+      "outputs_are_registered",
+      "timed_capture_capacity_and_lifecycle"
+    ]
+  },
+  "integrated_netlist": {
+    "result": "passed",
+    "groups": 8,
+    "names": [
+      "uart_pin_contract",
+      "host_load_execute_and_witness",
+      "host_corrupt_frames_busy_abort_and_reset",
+      "host_synchronized_response_and_atomic_snapshot",
+      "capture_overflow_readback_and_reset",
+      "i2c_stretch_sweep_and_replay",
+      "spi_four_modes_and_replay",
+      "spi_unknown_response_capture"
+    ]
+  },
+  "integrated_netlist_i2c_scope": "5 widths (0,19,20,24,48), nominal 100 kHz good/fault, replay; full RTL uses 49 widths",
+  "synthesis_core": {
+    "top": "witness_core",
+    "kind": "generic synthesis, not CMOS5L mapping or timing",
+    "tool": "Yosys 0.69 (git sha1 9f75ca1f9, Release, Clang /workspace/YoWASP/yosys/wasi-sdk-33.0-x86_64-linux/share/cmake/../..//bin/clang++ 22.1.0)",
+    "source_sha256": "763be4d4b048bb6a1089d5b18c8a075d1be723fe14fccf18f83128075f962c3b",
+    "source_hashes": {
+      "src/witness_core.v": "763be4d4b048bb6a1089d5b18c8a075d1be723fe14fccf18f83128075f962c3b"
+    },
+    "cells": 4904,
+    "flip_flops": 1566,
+    "cells_by_type": {
+      "$_ANDNOT_": 437,
+      "$_AND_": 620,
+      "$_DFFE_PP_": 1280,
+      "$_MUX_": 733,
+      "$_NAND_": 801,
+      "$_NOR_": 100,
+      "$_NOT_": 10,
+      "$_ORNOT_": 161,
+      "$_OR_": 422,
+      "$_SDFFE_PN0P_": 285,
+      "$_SDFF_PN0_": 1,
+      "$_XNOR_": 27,
+      "$_XOR_": 27
+    },
+    "structural_check": "passed"
+  },
+  "synthesis_integrated": {
+    "top": "tt_um_protocol_emulator",
+    "kind": "generic synthesis, not CMOS5L mapping or timing",
+    "tool": "Yosys 0.69 (git sha1 9f75ca1f9, Release, Clang /workspace/YoWASP/yosys/wasi-sdk-33.0-x86_64-linux/share/cmake/../..//bin/clang++ 22.1.0)",
+    "source_sha256": "763be4d4b048bb6a1089d5b18c8a075d1be723fe14fccf18f83128075f962c3b",
+    "source_hashes": {
+      "src/witness_core.v": "763be4d4b048bb6a1089d5b18c8a075d1be723fe14fccf18f83128075f962c3b",
+      "src/witness_host_spi.v": "1082f02bd52221e5be950f658a43235467e6173983c7bbca864f7f8a18106dd3",
+      "src/uart_tx.v": "81ae76dab55beebf50236c749b29940548815642047f268abaa6a83ff8e5fb28",
+      "src/project.v": "b4335a890a0c3a8cae0d6aa4d7dacb8cb7b40442534c2f657a6c4e131c1c03e2"
+    },
+    "cells": 6856,
+    "flip_flops": 1964,
+    "cells_by_type": {
+      "$_ANDNOT_": 307,
+      "$_AND_": 1176,
+      "$_DFFE_PP_": 1280,
+      "$_MUX_": 582,
+      "$_NAND_": 1469,
+      "$_NOR_": 80,
+      "$_NOT_": 17,
+      "$_ORNOT_": 281,
+      "$_OR_": 565,
+      "$_SDFFE_PN0P_": 568,
+      "$_SDFFE_PN1P_": 9,
+      "$_SDFFE_PP0P_": 79,
+      "$_SDFF_PN0_": 22,
+      "$_SDFF_PN1_": 3,
+      "$_SDFF_PP0_": 3,
+      "$_XNOR_": 295,
+      "$_XOR_": 120
+    },
+    "structural_check": "passed"
+  },
+  "formal": {
+    "result": "passed",
+    "depth": 12,
+    "timeout_reachable_by_step": 8,
+    "kind": "bounded safety, not induction",
+    "assumptions": "one initial synchronous reset; defined arbitrary inputs and initial state",
+    "properties": [
+      "capture count never exceeds 32",
+      "idle releases enables",
+      "done excludes running",
+      "synchronous reset clears outputs and execution",
+      "abort stops and releases",
+      "terminal record stays stable until restart/reset",
+      "load wins over simultaneous start"
+    ]
+  },
+  "core_mutations": [
+    {
+      "mutation": "capture_wrong_pin",
+      "test": "timed_capture_capacity_and_lifecycle",
+      "killed": true,
+      "failure_types": [
+        "AssertionError"
+      ]
+    },
+    {
+      "mutation": "capture_overwrite_full",
+      "test": "timed_capture_capacity_and_lifecycle",
+      "killed": true,
+      "failure_types": [
+        "AssertionError"
+      ]
+    },
+    {
+      "mutation": "miss_last_sample",
+      "test": "inclusive_deadlines_and_random_programs",
+      "killed": true,
+      "failure_types": [
+        "AssertionError"
+      ]
+    },
+    {
+      "mutation": "ignore_input_mask",
+      "test": "inclusive_deadlines_and_random_programs",
+      "killed": true,
+      "failure_types": [
+        "AssertionError"
+      ]
+    },
+    {
+      "mutation": "wrong_output_enable",
+      "test": "programmed_uart_independent_wire_oracle",
+      "killed": true,
+      "failure_types": [
+        "AssertionError"
+      ]
+    },
+    {
+      "mutation": "allow_live_write",
+      "test": "loader_reset_abort_and_faults",
+      "killed": true,
+      "failure_types": [
+        "AssertionError"
+      ]
+    }
+  ],
+  "host_mutations": [
+    {
+      "mutation": "tear_capture_snapshot",
+      "test": "capture_overflow_readback_and_reset",
+      "killed": true
+    },
+    {
+      "mutation": "ignore_crc",
+      "test": "host_corrupt_frames_busy_abort_and_reset",
+      "killed": true
+    },
+    {
+      "mutation": "ignore_frame_length",
+      "test": "host_corrupt_frames_busy_abort_and_reset",
+      "killed": true
+    },
+    {
+      "mutation": "write_while_locked",
+      "test": "host_load_execute_and_witness",
+      "killed": true
+    },
+    {
+      "mutation": "tear_snapshot",
+      "test": "host_synchronized_response_and_atomic_snapshot",
+      "killed": true
+    }
+  ],
+  "unknown_spi_exchanges": 16,
+  "unknown_spi_capture_records_match": true,
+  "known_spi_results_and_replay_traces_match": true,
+  "capture_cases": [
+    {
+      "mode": 0,
+      "response": 150,
+      "witness": {
+        "unlocked": true,
+        "host_error": false,
+        "time_wrapped": false,
+        "running": false,
+        "done": true,
+        "status": 0,
+        "cycle": 76,
+        "pc": 27,
+        "observed": 4,
+        "samples": 0,
+        "word": 0,
+        "capture_count": 8,
+        "capture_data": 150
+      }
+    },
+    {
+      "mode": 0,
+      "response": 0,
+      "witness": {
+        "unlocked": true,
+        "host_error": false,
+        "time_wrapped": false,
+        "running": false,
+        "done": true,
+        "status": 0,
+        "cycle": 76,
+        "pc": 27,
+        "observed": 4,
+        "samples": 0,
+        "word": 0,
+        "capture_count": 8,
+        "capture_data": 0
+      }
+    },
+    {
+      "mode": 0,
+      "response": 255,
+      "witness": {
+        "unlocked": true,
+        "host_error": false,
+        "time_wrapped": false,
+        "running": false,
+        "done": true,
+        "status": 0,
+        "cycle": 76,
+        "pc": 27,
+        "observed": 4,
+        "samples": 0,
+        "word": 0,
+        "capture_count": 8,
+        "capture_data": 255
+      }
+    },
+    {
+      "mode": 1,
+      "response": 150,
+      "witness": {
+        "unlocked": true,
+        "host_error": false,
+        "time_wrapped": false,
+        "running": false,
+        "done": true,
+        "status": 0,
+        "cycle": 76,
+        "pc": 27,
+        "observed": 4,
+        "samples": 0,
+        "word": 0,
+        "capture_count": 8,
+        "capture_data": 150
+      }
+    },
+    {
+      "mode": 1,
+      "response": 0,
+      "witness": {
+        "unlocked": true,
+        "host_error": false,
+        "time_wrapped": false,
+        "running": false,
+        "done": true,
+        "status": 0,
+        "cycle": 76,
+        "pc": 27,
+        "observed": 4,
+        "samples": 0,
+        "word": 0,
+        "capture_count": 8,
+        "capture_data": 0
+      }
+    },
+    {
+      "mode": 1,
+      "response": 255,
+      "witness": {
+        "unlocked": true,
+        "host_error": false,
+        "time_wrapped": false,
+        "running": false,
+        "done": true,
+        "status": 0,
+        "cycle": 76,
+        "pc": 27,
+        "observed": 4,
+        "samples": 0,
+        "word": 0,
+        "capture_count": 8,
+        "capture_data": 255
+      }
+    },
+    {
+      "mode": 2,
+      "response": 150,
+      "witness": {
+        "unlocked": true,
+        "host_error": false,
+        "time_wrapped": false,
+        "running": false,
+        "done": true,
+        "status": 0,
+        "cycle": 76,
+        "pc": 27,
+        "observed": 5,
+        "samples": 0,
+        "word": 0,
+        "capture_count": 8,
+        "capture_data": 150
+      }
+    },
+    {
+      "mode": 2,
+      "response": 0,
+      "witness": {
+        "unlocked": true,
+        "host_error": false,
+        "time_wrapped": false,
+        "running": false,
+        "done": true,
+        "status": 0,
+        "cycle": 76,
+        "pc": 27,
+        "observed": 5,
+        "samples": 0,
+        "word": 0,
+        "capture_count": 8,
+        "capture_data": 0
+      }
+    },
+    {
+      "mode": 2,
+      "response": 255,
+      "witness": {
+        "unlocked": true,
+        "host_error": false,
+        "time_wrapped": false,
+        "running": false,
+        "done": true,
+        "status": 0,
+        "cycle": 76,
+        "pc": 27,
+        "observed": 5,
+        "samples": 0,
+        "word": 0,
+        "capture_count": 8,
+        "capture_data": 255
+      }
+    },
+    {
+      "mode": 3,
+      "response": 150,
+      "witness": {
+        "unlocked": true,
+        "host_error": false,
+        "time_wrapped": false,
+        "running": false,
+        "done": true,
+        "status": 0,
+        "cycle": 76,
+        "pc": 27,
+        "observed": 5,
+        "samples": 0,
+        "word": 0,
+        "capture_count": 8,
+        "capture_data": 150
+      }
+    },
+    {
+      "mode": 3,
+      "response": 0,
+      "witness": {
+        "unlocked": true,
+        "host_error": false,
+        "time_wrapped": false,
+        "running": false,
+        "done": true,
+        "status": 0,
+        "cycle": 76,
+        "pc": 27,
+        "observed": 5,
+        "samples": 0,
+        "word": 0,
+        "capture_count": 8,
+        "capture_data": 0
+      }
+    },
+    {
+      "mode": 3,
+      "response": 255,
+      "witness": {
+        "unlocked": true,
+        "host_error": false,
+        "time_wrapped": false,
+        "running": false,
+        "done": true,
+        "status": 0,
+        "cycle": 76,
+        "pc": 27,
+        "observed": 5,
+        "samples": 0,
+        "word": 0,
+        "capture_count": 8,
+        "capture_data": 255
+      }
+    }
+  ],
+  "physical_checks_run": [],
+  "note": "Only artifact scope wording and an ISA module docstring changed after simulation; test behavior and RTL remained unchanged.",
+  "source_sha256": {
+    "src/project.v": "b4335a890a0c3a8cae0d6aa4d7dacb8cb7b40442534c2f657a6c4e131c1c03e2",
+    "src/uart_tx.v": "81ae76dab55beebf50236c749b29940548815642047f268abaa6a83ff8e5fb28",
+    "src/witness_core.v": "763be4d4b048bb6a1089d5b18c8a075d1be723fe14fccf18f83128075f962c3b",
+    "src/witness_host_spi.v": "1082f02bd52221e5be950f658a43235467e6173983c7bbca864f7f8a18106dd3",
+    "tools/witness_isa.py": "27c00fa9dde2f03b3e6019c4fbb5e0c6feeccc62f4d02365c3966ecd816e6fc1",
+    "tools/witness_host.py": "5c0c5dcf8ebc9be1f7d727345b4b1d93f859142e530ec2f269174c08bf8654a7",
+    "tools/spi_lab.py": "679d45bc8e18f24eef8f736aa60f64fcf73fad68f11c259da4ea737840c200bb",
+    "test/test_spi.py": "0ca991f5ac23b5be1a75e45e86ead0f375abdb526796f0fd9e1d739e801497c7",
+    "test/test_host.py": "d89ac03adab7d285fb85bc4c06fa03d6a344c9bd923bd49da22d0836a1e7b2fe",
+    "test/engine/test_engine.py": "886b223ee07f507e4411479b12274cc262561952dadeec84e855e860e8ef814b"
+  }
+}

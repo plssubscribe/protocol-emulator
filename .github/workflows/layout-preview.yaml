@@ -2,10 +2,6 @@ name: CMOS5L layout preview (8x2 only)
 
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - '.github/workflows/layout-preview.yaml'
-      - 'scripts/prepare-preview-action.py'
 
 permissions:
   contents: read
@@ -22,10 +18,10 @@ jobs:
           from pathlib import Path
           p = Path('info.yaml')
           original = p.read_text()
-          assert original.count('tiles: "8x4"') == 1
-          p.write_text(original.replace('tiles: "8x4"', 'tiles: "8x2"'))
+          assert original.count('tiles: "6x4"') == 1
+          p.write_text(original.replace('tiles: "6x4"', 'tiles: "8x2"'))
           PY
-          echo 'Preview only: same UART RTL and CMOS5L PDK, supported 8x2 floorplan. Competition 8x4 remains unvalidated.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Preview only: current checked-out RTL and CMOS5L PDK, supported 8x2 floorplan. Competition 6x4 remains separate.' >> "$GITHUB_STEP_SUMMARY"
       - name: Checkout pinned upstream action for installer compatibility repair
         uses: actions/checkout@v6
         with:
