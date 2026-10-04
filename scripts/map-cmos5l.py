@@ -1,5 +1,7 @@
 """Pinned CMOS5L library mapping only; no floorplan or physical timing claim."""
 import hashlib
+import fnmatch
+import re
 import json
 from pathlib import Path
 import shutil
@@ -31,6 +33,15 @@ with urllib.request.urlopen(exclude_url, timeout=60) as response:
     excludes = response.read().decode()
 (out / 'synth_exclude.cells').write_text(excludes)
 excluded_cells = [line.strip() for line in excludes.splitlines() if line.strip() and not line.startswith('#')]
+# Match the physical flow's additive exclusions without replacing PDK exclusions.
+extra_excluded = json.loads((root / 'src/config.json').read_text()).get('EXTRA_EXCLUDED_CELLS') or []
+lib_cells = re.findall(r'cell\s*\(\s*([^\s)]+)\s*\)', lib.read_text())
+for pattern in extra_excluded:
+    matched = [cell for cell in lib_cells if fnmatch.fnmatchcase(cell, pattern)]
+    if not matched:
+        raise SystemExit(f'Extra excluded cell pattern has no library match: {pattern}')
+    excluded_cells.extend(matched)
+excluded_cells = sorted(set(excluded_cells))
 exclude_flags = ' '.join('-dont_use ' + cell for cell in excluded_cells)
 relative_lib = str(lib.relative_to(root))
 commands = f'''read_liberty -lib {relative_lib};
@@ -64,6 +75,7 @@ for cell in data['modules']['tt_um_protocol_emulator']['cells'].values():
 summary = dict(scope='CMOS5L typical-corner library mapping; not physical implementation',
     tool=subprocess.check_output([tool, '-V'], text=True).strip(),
     process_revision=revision, library_url=url, excluded_cells=excluded_cells,
+    physical_config_sha256=hashlib.sha256((root / "src/config.json").read_bytes()).hexdigest(),
     library_sha256=hashlib.sha256(lib.read_bytes()).hexdigest(),
     model_sha256=hashlib.sha256((out / 'cells.v').read_bytes()).hexdigest(),
     source_sha256={p:hashlib.sha256((root/p).read_bytes()).hexdigest() for p in sources},
