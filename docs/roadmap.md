@@ -155,7 +155,9 @@ strict acceptance rejected it. ADR 0011 excludes the weak NOR4 mapping for a sec
 attempt, preserving PDK exclusions and all functional contracts. This cleared
 slew but exposed four data-buffer fanout violations from late antenna diode
 insertion. ADR 0012 selects detailed-route jumper-only antenna repair for attempt
-three; antenna and electrical checks stay required. No cleanup pass
+three; that attempt cleared electrical counts but left eight antenna nets.
+ADR 0013 restores diode protection and adds bounded late-load repair/rerouting
+through a native Classic-flow plugin; all original checks and gates remain. No cleanup pass
 is claimed until new reports, precheck and gate tests are reviewed.
 
 ## Next session

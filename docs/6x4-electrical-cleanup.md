@@ -60,3 +60,18 @@ Intermediate netlist comparison traces all four excess fanout counts to antenna
 diodes added during detailed routing. ADR 0012 selects detailed-route jumper-only
 antenna repair for the third attempt. Antenna checking and all electrical limits
 remain enabled and unchanged.
+
+## Third attempt
+
+Source: `7b09bb09fa5822d88f913d9211230559219c60a0`.
+
+- [Physical build and acceptance](https://github.com/plssubscribe/protocol-emulator/actions/runs/37235422243): GDS passed; strict acceptance failed on antenna violations; unfinished gate/precheck cancelled.
+- [RTL and generic regression](https://github.com/plssubscribe/protocol-emulator/actions/runs/37235422231): passed.
+- [Documentation](https://github.com/plssubscribe/protocol-emulator/actions/runs/37235422303): passed.
+
+The only new implementation change is detailed-route jumper-only antenna repair.
+Final reports show zero slew/fanout/capacitance violations, but eight antenna
+nets and twelve pins still violate. Setup/hold slack is +9.532713 / +0.127305 ns;
+route/Magic DRC and LVS counts are zero. Area is 235,172 µm² (26.0602%).
+[Preserved reports](evidence/electrical-cleanup-attempt-3/summary.json) record this
+rejected candidate. ADR 0013 restores diode protection and repairs loads afterward.
