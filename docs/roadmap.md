@@ -1,6 +1,6 @@
 # Project state and milestones
 
-Updated: 2026-09-16.
+Updated: 2026-10-04.
 
 ## M1 — UART pin bring-up
 
@@ -131,9 +131,13 @@ revisions. See [mapping evidence](cmos5l-mapping-evidence.md).
 
 ADR 0009 supersedes the original 8x4 requirement: both the organizer response and
 updated public rules specify 6x4 now. Canonical metadata uses the supported CMOS5L
-6x4 floorplan. The full integrated capture design is prepared for GDS, precheck and
-gate simulation at the unchanged 20 ns target. Results must be recorded separately
-from the historical UART preview and library-only mapping.
+6x4 floorplan. The full integrated capture design passed GDS, all nine prechecks
+and all eight gate-level functional test groups in run 35086370645. Artifact review
+on 2026-10-04 confirms 25.4554% core utilization, +8.846 ns setup and +0.130 ns
+hold slack at the unchanged 20 ns target; routed/Magic DRC, LVS and antenna counts
+are zero. **Four slow-corner slew and 131 clock-tree leaf fanout violations remain.**
+See [physical evidence](6x4-physical-evidence.md); this is a physical checkpoint,
+not complete signoff or hardware validation.
 
 ## M5 — Submission candidate
 
@@ -144,9 +148,10 @@ Stretch protocols follow evidence of area and timing headroom.
 
 ## Next session
 
-1. Build the integrated capture design on the approved CMOS5L 6x4 floorplan.
-   Inspect real area, setup/hold timing, routing and physical checks before
-   making another consequential memory/ISA expansion. Generic counts are insufficient.
+1. Resolve the four slew violations on the nor4-driven reset/control path and
+   the 131 clock-tree leaf fanout violations. Rerun the full physical and gate
+   checks without relaxing limits, then review constraints and skipped checks.
+   Preserve the committed baseline evidence before memory/ISA expansion.
 2. Implement the SPI adapter callback on available host/FPGA hardware and capture
    an actual loaded waveform. Document external signal timing and voltage mapping;
    neither has hardware evidence yet.

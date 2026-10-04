@@ -1,0 +1,13 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1789558288" />
+    <testcase name="uart_pin_contract" classname="test" file="/home/runner/work/protocol-emulator/protocol-emulator/test/test.py" lineno="24" time="23.196922779083252" sim_time_ns="869340.0" ratio_time="37476.52256634173" />
+    <testcase name="host_load_execute_and_witness" classname="test_host" file="/home/runner/work/protocol-emulator/protocol-emulator/test/test_host.py" lineno="70" time="28.725350856781006" sim_time_ns="995759.9999999999" ratio_time="34664.85074332651" />
+    <testcase name="host_corrupt_frames_busy_abort_and_reset" classname="test_host" file="/home/runner/work/protocol-emulator/protocol-emulator/test/test_host.py" lineno="127" time="12.154143571853638" sim_time_ns="495839.99999999977" ratio_time="40795.9637031323" />
+    <testcase name="host_synchronized_response_and_atomic_snapshot" classname="test_host" file="/home/runner/work/protocol-emulator/protocol-emulator/test/test_host.py" lineno="166" time="18.13972759246826" sim_time_ns="690320.0" ratio_time="38055.698272262125" />
+    <testcase name="capture_overflow_readback_and_reset" classname="test_host" file="/home/runner/work/protocol-emulator/protocol-emulator/test/test_host.py" lineno="204" time="11.552106857299805" sim_time_ns="398560.0" ratio_time="34501.06590280966" />
+    <testcase name="i2c_stretch_sweep_and_replay" classname="test_i2c" file="/home/runner/work/protocol-emulator/protocol-emulator/test/test_i2c.py" lineno="77" time="304.76589584350586" sim_time_ns="12694780.0" ratio_time="41654.20138255443" />
+    <testcase name="spi_four_modes_and_replay" classname="test_spi" file="/home/runner/work/protocol-emulator/protocol-emulator/test/test_spi.py" lineno="41" time="310.4403967857361" sim_time_ns="13448320.000000002" ratio_time="43320.13532788371" />
+    <testcase name="spi_unknown_response_capture" classname="test_spi" file="/home/runner/work/protocol-emulator/protocol-emulator/test/test_spi.py" lineno="83" time="96.51254343986511" sim_time_ns="4213120.0" ratio_time="43653.60034911011" />
+  </testsuite>
+</testsuites>

@@ -1,5 +1,8 @@
 # CMOS5L mapping checkpoint — 2026-09-14
 
+Update 2026-09-16: organizers now approve the supported 6x4 footprint. The original
+8x4 blocker below is historical; see [the current build](6x4-physical-evidence.md).
+
 The integrated capture design now maps to **8,463 standard cells**, with a summed
 Liberty cell area of **163,546.803 µm² (0.163547 mm²)**. This replaces a generic
 cell-count guess with a measurement using the pinned process library. It does not

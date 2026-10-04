@@ -40,6 +40,8 @@ jobs:
       - name: Repair duplicate process-directory checkout
         run: python3 scripts/prepare-preview-action.py
       - uses: ./.preview-action/precheck
+        with:
+          tools-ref: da63c9927411e3aca350977d653d24bbf5bca972
 
   gl_test:
     needs: gds

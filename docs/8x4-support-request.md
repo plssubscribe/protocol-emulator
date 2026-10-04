@@ -1,6 +1,7 @@
 # Draft upstream support request: CMOS5L 8x4 floorplan
 
-Draft only; not sent or published.
+Historical draft. Resolved by the organizer response supplied on 2026-09-16:
+use 6x4 now; see ADR 0009. Do not send this superseded request.
 
 The protocol-emulator competition template requests `tiles: "8x4"` with
 `pdk: ihp-sg13cmos5l`, but the action's selected support-tools revision rejects

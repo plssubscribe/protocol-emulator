@@ -3,7 +3,10 @@
 A learn-by-building entry for Jane Street’s Protocol Emulator ASIC Competition.
 Current milestone: Protocol Witness integrated into the Tiny Tapeout top, with an
 SPI program loader, registered protocol outputs and atomic failure readback. The
-original UART diagnostic remains available. Verified in simulation, not on hardware.
+original UART diagnostic remains available. The full design now fits CMOS5L 6x4,
+with passing setup/hold, geometry checks and gate simulation. Four transition
+and 131 clock-buffer fanout violations remain to resolve; hardware testing is open.
+See [physical evidence](docs/6x4-physical-evidence.md).
 
 ## Entry direction: Protocol Witness
 
@@ -33,7 +36,7 @@ After activating the environment below:
 
 ```sh
 make engine       # load programs, compare RTL cycles, save and replay a failure
-make mutations    # prove the tests catch four selected deliberate RTL defects
+make mutations    # prove the tests catch six selected deliberate RTL defects
 ```
 
 The 32-word core executes DRIVE, EXPECT, WAIT, JMP, SAMPLE and HALT. It generates all 256
@@ -62,7 +65,7 @@ uv pip install --python .venv/bin/python -r test/synthesis-requirements.txt
 make synth-check
 make formal       # bounded core safety checks plus timeout reachability
 make synth-top-check  # integrated generic netlist, public-pin regression
-make host-mutations   # four packet/snapshot protection defects must be detected
+make host-mutations   # five packet/snapshot protection defects must be detected
 ```
 
 This checks the synthesized generic netlist and records cell counts under
@@ -169,16 +172,16 @@ choice in `docs/decisions/`; preserve prior decisions and explicitly supersede t
 Keep each milestone runnable. Explain new concepts at the change that needs them.
 
 The repository is published at https://github.com/plssubscribe/protocol-emulator
-on `milestone/uart-tx`; `template` records upstream. Author metadata is Erik Newsham.
-The first GDS attempts stopped at metadata validation because the inherited CMOS5L
-support tools do not provide the required 8x4 floorplan. A separate supported
-8x2 preview now has a real [chip layout image](docs/images/uart-cmos5l-8x2-preview.png),
-passing precheck and gate simulation. That image is UART-only and does not include
-the new Witness core or host. The competition baseline is now 6x4 following the organizer update (ADR 0009). See
-[the physical-build record](docs/physical-build.md). Before submission, choose a
-unique top-module name and complete the physical checks. Configure GitHub Pages
-as required by the template viewer. Passing simulation does not establish physical timing or
-manufacturability; those remain separate acceptance gates.
+on `codex/physical-6x4`; `template` records upstream. Author metadata is Erik Newsham.
+The organizer-approved 6x4 build now has an actual integrated layout:
+
+![Protocol Witness CMOS5L 6x4 layout](docs/images/witness-cmos5l-6x4.png)
+
+[The physical evidence](docs/6x4-physical-evidence.md) records passing geometry,
+setup/hold and functional gate tests alongside remaining transition/fanout issues
+and skipped checks. The earlier UART-only 8x2 image is historical. Before submission,
+resolve electrical cleanup, validate hardware, choose a unique top-module name and
+recheck rules. Configure GitHub Pages as required by the template viewer.
 
 ## Provenance and constraints
 
@@ -187,5 +190,5 @@ commit `b86a2a781484bcab7ba522dc5de540086695a430`, retrieved 2026-09-12.
 The [competition announcement](https://blog.janestreet.com/protocol-emulator-asic-competition/)
 now requires an open-source programmable protocol emulator, CMOS5L and 6x4 tiles;
 the announced deadline is January 18, 2027. Rules should be rechecked before submission.
-The inherited Apache-2.0 license is retained. Template action branch references
-remain upstream defaults; record resolved versions when producing a release build.
+The inherited Apache-2.0 license is retained. Physical build action and support-tool revisions are pinned; documentation uses
+the upstream action branch. Record resolved process/tool revisions for release builds.

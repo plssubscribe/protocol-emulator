@@ -1,5 +1,10 @@
 # First CMOS5L build attempt
 
+**Current status (2026-10-04):** the full integrated 6x4 build passed GDS, precheck
+and gate simulation, with positive setup/hold slack. Four max-slew and 131 clock
+leaf fanout violations remain. Organizer-approved 6x4 supersedes the 8x4 blocker. See [the current integrated build](6x4-physical-evidence.md)
+and ADR 0009. The dated results below describe earlier designs and attempts.
+
 Date: 2026-09-12.
 
 ## Workflow inspection
