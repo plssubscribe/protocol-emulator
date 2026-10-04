@@ -31,6 +31,15 @@
   "//": "https://tinytapeout.com/faq/#how-can-i-map-an-additional-external-clock-to-one-of-the-gpios",
   "CLOCK_PORT": "clk",
 
+  "//": "ADR 0010: cap clock leaf groups below the library fanout limit of 8.",
+  "CTS_SINK_CLUSTERING_SIZE": 6,
+
+  "//": "Repair electrical loads with routed parasitics, then restore setup/hold margins.",
+  "RUN_POST_GRT_DESIGN_REPAIR": 1,
+  "GRT_DESIGN_REPAIR_MAX_SLEW_PCT": 20,
+  "RUN_POST_GRT_RESIZER_TIMING": 1,
+
+
   "//": "Configuration docs: https://librelane.readthedocs.io/en/latest/reference/configuration.html",
 
   "//": "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",

@@ -57,3 +57,20 @@ jobs:
       - name: Repair duplicate process-directory checkout
         run: python3 scripts/prepare-preview-action.py
       - uses: ./.preview-action/gl_test
+
+  electrical_checks:
+    needs: gds
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/download-artifact@v7
+        with:
+          name: GDS_logs
+          path: physical-artifacts/GDS_logs
+      - name: Require clean final timing, electrical and geometry metrics
+        run: python3 scripts/summarize-physical.py physical-artifacts physical-summary.json --require-clean
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: physical_summary
+          path: physical-summary.json

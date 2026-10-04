@@ -8,6 +8,8 @@ from pathlib import Path
 parser = argparse.ArgumentParser()
 parser.add_argument('artifacts', type=Path)
 parser.add_argument('output', type=Path)
+parser.add_argument('--require-clean', action='store_true',
+                    help='Fail unless final timing and electrical metrics are present and clean.')
 args = parser.parse_args()
 run = args.artifacts / 'GDS_logs/runs/wokwi'
 states = sorted(run.glob('*/state_out.json'), key=lambda p: int(p.parent.name.split('-')[0]))
@@ -44,3 +46,22 @@ report = finite(report)
 args.output.parent.mkdir(parents=True, exist_ok=True)
 args.output.write_text(json.dumps(report, indent=2, allow_nan=False)+'\n')
 print(json.dumps(report['metrics'], indent=2))
+
+if args.require_clean:
+    required_zero = ['timing__setup_vio__count', 'timing__hold_vio__count',
+                     'design__max_slew_violation__count',
+                     'design__max_fanout_violation__count',
+                     'design__max_cap_violation__count',
+                     'route__drc_errors', 'magic__drc_error__count',
+                     'design__lvs_error__count', 'antenna__violating__nets',
+                     'antenna__violating__pins']
+    failures = [key for key in required_zero if report['metrics'].get(key) != 0]
+    for key in ['timing__setup__ws', 'timing__hold__ws']:
+        value = report['metrics'].get(key)
+        if value is None or value < 0:
+            failures.append(key)
+    if 'reportmanufacturability' not in state.parent.name:
+        failures.append('final manufacturability state absent')
+    if failures:
+        raise SystemExit('Physical acceptance failed: ' + ', '.join(failures))
+    print('Reported timing, electrical and geometry metrics are clean. Separate gate/precheck jobs remain required.')

@@ -146,6 +146,13 @@ Pass current Tiny Tapeout physical checks, gate simulation and timing for the cu
 Fill author/identity metadata, recheck competition rules and submit by January 18, 2027.
 Stretch protocols follow evidence of area and timing headroom.
 
+### Electrical cleanup — 2026-10-04
+
+ADR 0010 caps clock sink groups at six and enables routed electrical repair plus
+subsequent timing repair. CI now explicitly rejects remaining final electrical
+violations. Parent PDK is pinned to the baseline revision. Physical rerun pending;
+no cleanup pass is claimed until new reports, precheck and gate tests are reviewed.
+
 ## Next session
 
 1. Resolve the four slew violations on the nor4-driven reset/control path and
