@@ -75,3 +75,20 @@ nets and twelve pins still violate. Setup/hold slack is +9.532713 / +0.127305 ns
 route/Magic DRC and LVS counts are zero. Area is 235,172 µm² (26.0602%).
 [Preserved reports](evidence/electrical-cleanup-attempt-3/summary.json) record this
 rejected candidate. ADR 0013 restores diode protection and repairs loads afterward.
+
+
+## Fourth attempt
+
+Source: `2acd7e5a85cbbf0c5dbb81da7a440fc84d98aeb6`.
+
+- [Physical build and acceptance](https://github.com/plssubscribe/protocol-emulator/actions/runs/37239496072): implementation failed during late rerouting; downstream checks skipped.
+- [RTL and generic regression](https://github.com/plssubscribe/protocol-emulator/actions/runs/37239496093): passed.
+- [Documentation](https://github.com/plssubscribe/protocol-emulator/actions/runs/37239496063): passed.
+
+Local `python scripts/check-physical-flow.py` passed with LibreLane 3.0.0rc1:
+native discovery, all original Classic steps/configuration/gates, unique step IDs
+and the intended late-repair order. OpenROAD did not run locally. The late repair found all four fanout violations and inserted six buffers.
+However, global routing skipped nets with existing detailed wires. The old wires
+then disagreed with the changed connectivity; rerouting failed with DRT-0206.
+No final physical result, gate simulation or precheck is claimed. ADR 0014 adds
+an explicit signal-route reset before each late repair, preserving the power grid.

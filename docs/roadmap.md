@@ -157,7 +157,9 @@ slew but exposed four data-buffer fanout violations from late antenna diode
 insertion. ADR 0012 selects detailed-route jumper-only antenna repair for attempt
 three; that attempt cleared electrical counts but left eight antenna nets.
 ADR 0013 restores diode protection and adds bounded late-load repair/rerouting
-through a native Classic-flow plugin; all original checks and gates remain. No cleanup pass
+through a native Classic-flow plugin; all original checks and gates remain.
+Its repair inserted six buffers, but rerouting rejected stale detailed wires.
+ADR 0014 clears obsolete signal routes before each late repair. No cleanup pass
 is claimed until new reports, precheck and gate tests are reviewed.
 
 ## Next session

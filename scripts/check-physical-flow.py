@@ -24,8 +24,8 @@ assert flow.gating_config_vars['Witness.RepairLateLoads*'] == ['RUN_POST_GRT_DES
 assert flow.gating_config_vars['Witness.RerouteLateLoads*'] == ['RUN_DRT']
 assert len(set(ids)) == len(ids)
 i = ids.index('OpenROAD.DetailedRouting')
-assert ids[i+1:i+5] == [
-    'Witness.RepairLateLoads', 'Witness.RerouteLateLoads',
-    'Witness.RepairLateLoads-1', 'Witness.RerouteLateLoads-1',
+assert ids[i+1:i+7] == [
+    'Witness.ClearSignalRoutes', 'Witness.RepairLateLoads', 'Witness.RerouteLateLoads',
+    'Witness.ClearSignalRoutes-1', 'Witness.RepairLateLoads-1', 'Witness.RerouteLateLoads-1',
 ]
 print('WitnessClassic: native discovery, original steps/config/gates and late repair order PASS')
