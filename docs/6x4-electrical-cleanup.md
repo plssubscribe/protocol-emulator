@@ -3,7 +3,7 @@
 Started 2026-10-04. Decision: [ADR 0010](decisions/0010-routed-electrical-cleanup.md).
 The [baseline physical evidence](6x4-physical-evidence.md) remains unchanged.
 
-Source: `689f55a3422bdb1c4a27d1a338fb165d481c59d8` on `codex/physical-6x4`.
+First-attempt source: `689f55a3422bdb1c4a27d1a338fb165d481c59d8` on `codex/physical-6x4`.
 
 - [Physical build, electrical acceptance, gate simulation and precheck](https://github.com/plssubscribe/protocol-emulator/actions/runs/37228616726)
 - [RTL and generic-netlist regression](https://github.com/plssubscribe/protocol-emulator/actions/runs/37228616702)
@@ -34,3 +34,29 @@ RTL, clock period, footprint, pin map, reset, instruction timing and standalone
 process revision are unchanged. The parent PDK checkout is pinned to the baseline's
 recorded revision. Do not replace the baseline image or promote a result until
 completed artifacts have been reviewed.
+
+## Second attempt
+
+Source: `ee460c64fb2cad045c2d366f3e67aa86bb5d7b21`.
+
+- [Physical build and acceptance](https://github.com/plssubscribe/protocol-emulator/actions/runs/37231460552): GDS passed; strict electrical acceptance failed; unfinished gate/precheck jobs cancelled.
+- [RTL and generic regression](https://github.com/plssubscribe/protocol-emulator/actions/runs/37231460578): passed.
+- [Documentation](https://github.com/plssubscribe/protocol-emulator/actions/runs/37231460581): passed.
+
+Local `make cmos5l-map-check` passed all three selected mapped-netlist tests:
+host execution/witness, capture overflow/readback/reset, and unknown SPI capture.
+The mapping contains 8,471 cells, 163,806.6024 µm² summed typical-library area,
+and zero `sg13cmos5l_nor4_1` instances. This is mapping and functional behavior
+evidence, not routed electrical acceptance. Physical config SHA256:
+`f8c9c471cd2c7f3b75cdbd5dcf5c62ada8e2e19653f96320eaffaf75717634dd`.
+
+Second-attempt final reports show zero slew, zero capacitance, four fanout
+violations, +9.517722 ns setup and +0.127329 ns hold slack. Standard-cell area
+is 235,329 µm² (26.0777% utilization). Geometry and antenna counts are zero.
+[Preserved reports](evidence/electrical-cleanup-attempt-2/summary.json) distinguish
+this rejected candidate from the baseline and the next attempt.
+
+Intermediate netlist comparison traces all four excess fanout counts to antenna
+diodes added during detailed routing. ADR 0012 selects detailed-route jumper-only
+antenna repair for the third attempt. Antenna checking and all electrical limits
+remain enabled and unchanged.

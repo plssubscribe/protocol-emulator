@@ -152,7 +152,10 @@ ADR 0010 caps clock sink groups at six and enables routed electrical repair plus
 subsequent timing repair. CI now explicitly rejects remaining final electrical
 violations. Parent PDK is pinned to the baseline revision. First rerun eliminated all fanout violations but retained four slew violations;
 strict acceptance rejected it. ADR 0011 excludes the weak NOR4 mapping for a second
-attempt, preserving PDK exclusions and all functional contracts. No cleanup pass
+attempt, preserving PDK exclusions and all functional contracts. This cleared
+slew but exposed four data-buffer fanout violations from late antenna diode
+insertion. ADR 0012 selects detailed-route jumper-only antenna repair for attempt
+three; antenna and electrical checks stay required. No cleanup pass
 is claimed until new reports, precheck and gate tests are reviewed.
 
 ## Next session

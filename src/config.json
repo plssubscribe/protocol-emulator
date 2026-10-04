@@ -37,6 +37,9 @@
   "//": "ADR 0011: avoid the weak NOR4 driver responsible for routed slew violations.",
   "EXTRA_EXCLUDED_CELLS": ["sg13cmos5l_nor4_1"],
 
+  "//": "ADR 0012: repair detailed-route antenna with jumpers to avoid excess diode fanout.",
+  "DRT_ANTENNA_REPAIR_JUMPER_ONLY": 1,
+
   "//": "Repair electrical loads with routed parasitics, then restore setup/hold margins.",
   "RUN_POST_GRT_DESIGN_REPAIR": 1,
   "GRT_DESIGN_REPAIR_MAX_SLEW_PCT": 20,
